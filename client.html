@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Dashboard — Navneet Priye Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=DM+Mono:wght@300;400;500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0b1628;
+  --deep: #111e35;
+  --card: #142033;
+  --gold: #c9a84c;
+  --gold-light: #e8c96e;
+  --teal: #2a7f6f;
+  --teal-light: #3aab97;
+  --slate: #8fa3bc;
+  --white: #ffffff;
+  --text: #c8d6e5;
+  --dim: #6b82a0;
+  --border: rgba(255,255,255,0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* NOT FOUND */
+#not-found {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(42,127,111,0.1) 0%, transparent 60%);
+}
+.nf-icon { font-size: 4rem; margin-bottom: 1.5rem; opacity: 0.4; }
+.nf-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 0.8rem; }
+.nf-sub { color: var(--dim); font-size: 0.95rem; max-width: 380px; margin: 0 auto 2rem; line-height: 1.7; }
+.nf-link { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 2px; }
+
+/* HEADER */
+header {
+  background: rgba(11,22,40,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 1.2rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-brand { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--gold); }
+.header-brand span { font-style: italic; }
+.header-right { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); }
+
+/* HERO BANNER */
+.project-banner {
+  background: linear-gradient(135deg, var(--deep) 0%, #0d1e38 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.project-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(42,127,111,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.banner-inner { max-width: 900px; margin: 0 auto; position: relative; }
+.banner-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.banner-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+.banner-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,4vw,2.4rem); color: var(--white); margin-bottom: 0.5rem; }
+.banner-service { font-size: 0.9rem; color: var(--dim); margin-bottom: 1.8rem; }
+.banner-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+.meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.meta-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); }
+.meta-value { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+
+/* BADGES */
+.badge { display: inline-flex; align-items: center; gap: 0.35rem; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; }
+.badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.badge-new { background: rgba(74,127,203,0.15); color: #6a9fe0; }
+.badge-active { background: rgba(201,168,76,0.15); color: var(--gold); }
+.badge-review { background: rgba(139,111,203,0.15); color: #a98fe0; }
+.badge-complete { background: rgba(42,127,111,0.2); color: var(--teal-light); }
+.badge-paid { background: rgba(42,127,111,0.15); color: var(--teal-light); }
+.badge-unpaid { background: rgba(224,85,85,0.15); color: #e07070; }
+.badge-partial { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+/* MAIN CONTENT */
+.content { max-width: 900px; margin: 0 auto; padding: 2.5rem 3rem; }
+
+/* SECTION HEADER */
+.section-header { margin-bottom: 1.5rem; }
+.section-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--slate);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* CARD */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+.card-body { padding: 2rem; }
+
+/* PROGRESS / MILESTONES */
+.progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.progress-pct { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.progress-pct span { font-size: 1rem; font-family: 'DM Mono', monospace; color: var(--dim); }
+.big-progress-bar { height: 6px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; margin-bottom: 2rem; }
+.big-progress-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--gold), var(--teal-light)); transition: width 0.8s ease; }
+.milestone-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.milestone-row { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 4px; transition: all 0.3s; }
+.milestone-row.done { background: rgba(42,127,111,0.07); border-color: rgba(42,127,111,0.2); }
+.ms-icon { width: 1.8rem; height: 1.8rem; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.7rem; }
+.ms-icon.done { background: var(--teal); border-color: var(--teal); color: white; }
+.ms-icon.pending { color: transparent; }
+.ms-label { font-size: 0.9rem; }
+.ms-label.done { color: var(--teal-light); }
+.ms-label.pending { color: var(--text); }
+.ms-status { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.ms-status.done { color: var(--teal-light); }
+.ms-status.pending { color: var(--dim); }
+
+/* MESSAGES */
+.message-thread { display: flex; flex-direction: column; gap: 1rem; }
+.message-bubble { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; border-top-left-radius: 2px; padding: 1.2rem 1.4rem; position: relative; }
+.message-bubble::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 2px; }
+.msg-from { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.msg-text { font-size: 0.92rem; line-height: 1.7; color: var(--text); }
+.msg-date { font-family: 'DM Mono', monospace; font-size: 0.58rem; color: var(--dim); margin-top: 0.7rem; }
+
+/* INVOICE / PAYMENT CARD */
+.invoice-card { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
+.invoice-amount { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+.invoice-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim); margin-bottom: 0.4rem; }
+.invoice-meta { font-size: 0.85rem; color: var(--dim); margin-top: 0.6rem; }
+
+/* PAY BUTTON */
+.pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 2.2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.pay-btn-razorpay { background: #528ff8; color: white; }
+.pay-btn-razorpay:hover { background: #6ba0ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(82,143,248,0.3); }
+.pay-btn-paypal { background: #009cde; color: white; }
+.pay-btn-paypal:hover { background: #00b4ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,156,222,0.3); }
+.pay-btn:disabled, .pay-btn.disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+/* PAID BANNER */
+.paid-banner { display: flex; align-items: center; gap: 1rem; padding: 1.2rem 1.5rem; background: rgba(42,127,111,0.1); border: 1px solid rgba(42,127,111,0.3); border-radius: 6px; }
+.paid-icon { font-size: 1.8rem; }
+.paid-text { font-size: 0.92rem; color: var(--teal-light); font-weight: 600; }
+.paid-sub { font-size: 0.8rem; color: var(--dim); }
+
+/* EMPTY STATE */
+.empty-state { padding: 2.5rem; text-align: center; color: var(--dim); }
+.empty-icon { font-size: 2.5rem; margin-bottom: 0.8rem; opacity: 0.4; }
+.empty-text { font-size: 0.88rem; }
+
+/* CONTACT FOOTER */
+.contact-bar { background: var(--deep); border-top: 1px solid var(--border); padding: 2rem 3rem; margin-top: 1rem; }
+.contact-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.contact-text { font-size: 0.88rem; color: var(--dim); }
+.contact-text strong { color: var(--white); }
+.contact-link { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
+.contact-link:hover { border-color: var(--gold); }
+
+/* FOOTER */
+footer { background: #070f1d; border-top: 1px solid rgba(201,168,76,0.08); padding: 1.5rem 3rem; text-align: center; }
+.footer-text { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.footer-text a { color: var(--gold); text-decoration: none; }
+
+/* LOADING */
+#loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.spinner { width: 36px; height: 36px; border: 2px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+
+@media(max-width:700px){
+  header, .project-banner, .content, .contact-bar, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .invoice-card { grid-template-columns: 1fr; }
+  .banner-meta { gap: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text">Loading your project...</div>
+</div>
+
+<!-- NOT FOUND -->
+<div id="not-found">
+  <div class="nf-icon">🔍</div>
+  <div class="nf-title">Project Not Found</div>
+  <p class="nf-sub">This project link may be invalid or expired. Please check with Navneet for the correct link.</p>
+  <a class="nf-link" href="index.html">← Back to Website</a>
+</div>
+
+<!-- PORTAL -->
+<div id="portal" style="display:none;">
+
+  <header>
+    <div class="header-brand">Navneet <span>Priye Chauhan</span></div>
+    <div class="header-right">Client Project Portal</div>
+  </header>
+
+  <!-- BANNER -->
+  <div class="project-banner">
+    <div class="banner-inner">
+      <div class="banner-eyebrow">Your Project Dashboard</div>
+      <div class="banner-title" id="client-name">Loading...</div>
+      <div class="banner-service" id="client-service"></div>
+      <div class="banner-meta">
+        <div class="meta-item">
+          <div class="meta-label">Project Status</div>
+          <div id="status-badge"></div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Payment</div>
+          <div id="pay-badge"></div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Started</div>
+          <div class="meta-value" id="created-date">—</div>
+        </div>
+        <div class="meta-item" id="due-date-meta" style="display:none;">
+          <div class="meta-label">Payment Due</div>
+          <div class="meta-value" id="due-date-val">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- PROGRESS -->
+    <div class="section-header">
+      <div class="section-title">Project Progress</div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="progress-header">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dim);margin-bottom:0.3rem;">Overall Completion</div>
+            <div class="progress-pct" id="pct-display">0<span>%</span></div>
+          </div>
+          <div id="completion-badge"></div>
+        </div>
+        <div class="big-progress-bar">
+          <div class="big-progress-fill" id="big-bar" style="width:0%"></div>
+        </div>
+        <div class="milestone-list" id="milestone-list">
+          <div class="empty-state"><div class="empty-icon">📋</div><div class="empty-text">No milestones have been set yet.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="section-header">
+      <div class="section-title">Messages from Navneet</div>
+    </div>
+    <div class="card">
+      <div class="card-body" id="messages-body">
+        <div class="empty-state"><div class="empty-icon">💬</div><div class="empty-text">No messages yet. Check back here for project updates.</div></div>
+      </div>
+    </div>
+
+    <!-- INVOICE & PAYMENT -->
+    <div class="section-header">
+      <div class="section-title">Invoice &amp; Payment</div>
+    </div>
+    <div class="card" id="payment-card">
+      <div class="card-body" id="payment-body">
+        <div class="empty-state"><div class="empty-icon">💰</div><div class="empty-text">Invoice details will appear here once your project is confirmed.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="contact-inner">
+      <div class="contact-text">Questions about your project? Reach out to <strong>Navneet Priye Chauhan</strong> directly.</div>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a class="contact-link" href="index.html">← Back to Website</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-text">Managed by <a href="index.html">Navneet Priye Chauhan</a> · Independent Financial Operations Contractor · Lucknow, India</div>
+  </footer>
+
+</div>
+
+<script>
+const PROJECTS_KEY = 'npc_projects';
+
+function getProjects() {
+  try { return JSON.parse(localStorage.getItem(PROJECTS_KEY)) || []; } catch { return []; }
+}
+
+function getParam(key) {
+  return new URLSearchParams(window.location.search).get(key);
+}
+
+function statusBadge(s) {
+  const map = { new:'badge-new', active:'badge-active', review:'badge-review', complete:'badge-complete' };
+  const lbl = { new:'New', active:'In Progress', review:'Under Review', complete:'Complete' };
+  return `<span class="badge ${map[s]||'badge-new'}">${lbl[s]||s}</span>`;
+}
+function payBadge(s) {
+  const map = { paid:'badge-paid', unpaid:'badge-unpaid', partial:'badge-partial' };
+  const lbl = { paid:'Fully Paid', unpaid:'Payment Pending', partial:'Partially Paid' };
+  return `<span class="badge ${map[s]||'badge-unpaid'}">${lbl[s]||s}</span>`;
+}
+
+function init() {
+  const projectId = getParam('project');
+
+  if (!projectId) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('not-found').style.display = 'flex';
+    return;
+  }
+
+  const projects = getProjects();
+  const project  = projects.find(p => p.id === projectId);
+
+  if (!project) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('not-found').style.display = 'flex';
+    return;
+  }
+
+  // Populate
+  document.title = `${project.clientName} — Project Dashboard`;
+  document.getElementById('client-name').textContent = project.clientName;
+  document.getElementById('client-service').textContent = project.service;
+  document.getElementById('status-badge').innerHTML = statusBadge(project.status);
+  document.getElementById('pay-badge').innerHTML = payBadge(project.paymentStatus);
+  document.getElementById('created-date').textContent = project.createdAt || '—';
+
+  if (project.dueDate) {
+    document.getElementById('due-date-meta').style.display = 'flex';
+    document.getElementById('due-date-val').textContent = formatDate(project.dueDate);
+  }
+
+  // Milestones
+  const milestones = project.milestones || [];
+  const done = milestones.filter(m => m.done).length;
+  const pct  = milestones.length ? Math.round(done / milestones.length * 100) : 0;
+
+  document.getElementById('pct-display').innerHTML = `${pct}<span>%</span>`;
+  document.getElementById('big-bar').style.width = pct + '%';
+
+  if (pct === 100) {
+    document.getElementById('completion-badge').innerHTML = `<span class="badge badge-complete">✓ Complete</span>`;
+  } else {
+    document.getElementById('completion-badge').innerHTML = `<span style="font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--dim);">${done} of ${milestones.length} done</span>`;
+  }
+
+  if (milestones.length) {
+    document.getElementById('milestone-list').innerHTML = milestones.map((m, i) => `
+      <div class="milestone-row ${m.done ? 'done' : ''}">
+        <div class="ms-icon ${m.done ? 'done' : 'pending'}">${m.done ? '✓' : ''}</div>
+        <div class="ms-label ${m.done ? 'done' : 'pending'}">${m.text}</div>
+        <div class="ms-status ${m.done ? 'done' : 'pending'}">${m.done ? 'Done' : 'Pending'}</div>
+      </div>`).join('');
+  }
+
+  // Messages
+  const notes = project.notes || [];
+  if (notes.length) {
+    document.getElementById('messages-body').innerHTML = `
+      <div class="message-thread">
+        ${notes.map(n => `
+          <div class="message-bubble">
+            <div class="msg-from">Navneet Priye Chauhan</div>
+            <div class="msg-text">${n.text}</div>
+            <div class="msg-date">${n.date}</div>
+          </div>`).join('')}
+      </div>`;
+  }
+
+  // Payment
+  renderPayment(project);
+
+  // Show portal
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('portal').style.display = 'block';
+}
+
+function renderPayment(project) {
+  const body = document.getElementById('payment-body');
+  if (!project.amount) {
+    body.innerHTML = `<div class="empty-state"><div class="empty-icon">💰</div><div class="empty-text">Invoice details will appear here once your project scope is confirmed.</div></div>`;
+    return;
+  }
+
+  const sym     = project.currency === 'INR' ? '₹' : '$';
+  const fmtAmt  = `${sym}${Number(project.amount).toLocaleString()}`;
+  const isPaid  = project.paymentStatus === 'paid';
+  const hasLink = project.payLink && project.payLink.trim();
+
+  let payBtn = '';
+  if (isPaid) {
+    payBtn = `
+      <div class="paid-banner">
+        <div class="paid-icon">✅</div>
+        <div>
+          <div class="paid-text">Payment Received — Thank You!</div>
+          <div class="paid-sub">Your payment has been confirmed. We appreciate your business.</div>
+        </div>
+      </div>`;
+  } else if (hasLink) {
+    const isPayPal   = project.payMethod === 'paypal';
+    const btnClass   = isPayPal ? 'pay-btn-paypal' : 'pay-btn-razorpay';
+    const btnIcon    = isPayPal ? '🌐' : '🇮🇳';
+    const btnLabel   = isPayPal ? 'Pay via PayPal' : 'Pay via Razorpay';
+    payBtn = `<a href="${project.payLink}" target="_blank" rel="noopener" class="pay-btn ${btnClass}">${btnIcon} ${btnLabel} — ${fmtAmt}</a>`;
+  } else {
+    payBtn = `<button class="pay-btn pay-btn-razorpay disabled" disabled>Payment Link Coming Soon</button>`;
+  }
+
+  body.innerHTML = `
+    <div class="invoice-card">
+      <div>
+        <div class="invoice-label">Amount Due</div>
+        <div class="invoice-amount">${fmtAmt}</div>
+        <div class="invoice-meta">
+          ${project.currency} · ${project.payMethod === 'paypal' ? 'PayPal' : 'Razorpay'}
+          ${project.dueDate ? ' · Due ' + formatDate(project.dueDate) : ''}
+        </div>
+        <div style="margin-top:1.2rem;">${payBadge(project.paymentStatus)}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1rem;">
+        ${payBtn}
+        ${!isPaid ? `<div style="font-size:0.76rem;color:var(--dim);text-align:right;max-width:220px;">Secure payment via ${project.payMethod === 'paypal' ? 'PayPal' : 'Razorpay'}. You will be redirected to complete your payment.</div>` : ''}
+      </div>
+    </div>`;
+}
+
+function formatDate(d) {
+  if (!d) return '—';
+  try { return new Date(d).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }); } catch { return d; }
+}
+
+// Small polling refresh — if admin updates project, client sees it within 10s
+setInterval(() => {
+  const projectId = getParam('project');
+  if (!projectId) return;
+  const projects = getProjects();
+  const project  = projects.find(p => p.id === projectId);
+  if (!project) return;
+  // Silently update badges and payment
+  document.getElementById('status-badge').innerHTML = statusBadge(project.status);
+  document.getElementById('pay-badge').innerHTML = payBadge(project.paymentStatus);
+  renderPayment(project);
+}, 10000);
+
+init();
+</script>
+</body>
+</html>
