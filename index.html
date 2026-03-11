@@ -3,1078 +3,326 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Navneet Priye Chauhan — Financial Operations Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Navneet Priye Chauhan — Finance & Operations Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0b1628;
-    --deep: #111e35;
-    --gold: #c9a84c;
-    --gold-light: #e8c96e;
-    --cream: #f5f0e8;
-    --mist: #dde6f0;
-    --slate: #8fa3bc;
-    --white: #ffffff;
-    --accent-teal: #2a7f6f;
-    --accent-teal-light: #3aab97;
-    --text-body: #c8d6e5;
-    --text-dim: #6b82a0;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Nunito Sans', sans-serif;
-    background: var(--navy);
-    color: var(--text-body);
-    overflow-x: hidden;
-    line-height: 1.7;
-  }
-
-  /* ─── NOISE TEXTURE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 900;
-    padding: 1.2rem 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(11, 22, 40, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--white); font-style: italic; }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--slate);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-
-  .nav-cta {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--navy) !important;
-    background: var(--gold);
-    padding: 0.55rem 1.4rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.3s !important;
-  }
-  .nav-cta:hover { background: var(--gold-light) !important; }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 0 4rem;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(42, 127, 111, 0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 80% at 10% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
-                linear-gradient(135deg, #0b1628 0%, #0d1e38 50%, #0b1628 100%);
-  }
-
-  .hero-grid-lines {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 720px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  .hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--gold);
-    display: block;
-  }
-
-  .hero-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    color: var(--accent-teal-light);
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-
-  .hero-desc {
-    font-size: 1.05rem;
-    color: var(--text-body);
-    max-width: 560px;
-    margin-bottom: 3rem;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
-  .hero-badges {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
-  }
-
-  .badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.45rem 1rem;
-    border: 1px solid;
-    border-radius: 2px;
-  }
-  .badge-gold { border-color: rgba(201, 168, 76, 0.4); color: var(--gold); }
-  .badge-teal { border-color: rgba(42, 127, 111, 0.5); color: var(--accent-teal-light); }
-  .badge-slate { border-color: rgba(143, 163, 188, 0.3); color: var(--slate); }
-
-  .hero-cta-group {
-    display: flex;
-    gap: 1.2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 1.2s forwards;
-  }
-
-  .btn-primary {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 1rem 2.2rem;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-    font-weight: 500;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3); }
-
-  .btn-secondary {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 1rem 2.2rem;
-    background: transparent;
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-block;
-  }
-  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-  /* Hero right ornament */
-  .hero-ornament {
-    position: absolute;
-    right: 4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    animation: fadeIn 1.2s 1.4s forwards;
-  }
-
-  .ornament-ring {
-    width: 360px;
-    height: 360px;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 168, 76, 0.15);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ornament-ring::before {
-    content: '';
-    position: absolute;
-    inset: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(42, 127, 111, 0.2);
-  }
-  .ornament-ring::after {
-    content: '';
-    position: absolute;
-    inset: 40px;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 168, 76, 0.1);
-  }
-
-  .ornament-inner {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(42, 127, 111, 0.15) 0%, rgba(11, 22, 40, 0.5) 100%);
-    border: 1px solid rgba(42, 127, 111, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 0.4rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .ornament-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .ornament-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  /* floating dots on ornament */
-  .dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-  }
-  .dot-1 { top: 20px; left: 50%; transform: translateX(-50%); }
-  .dot-2 { bottom: 20px; right: 60px; background: var(--accent-teal-light); }
-  .dot-3 { top: 50%; left: 15px; transform: translateY(-50%); background: var(--slate); width: 5px; height: 5px; }
-
-  /* ─── SECTION SHARED ─── */
-  section { padding: 7rem 4rem; }
-
-  .section-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  .section-tag::before {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  .section-heading {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-  }
-  .section-heading em { font-style: italic; color: var(--gold); }
-
-  /* ─── ABOUT / IDENTITY ─── */
-  .about {
-    background: var(--deep);
-    border-top: 1px solid rgba(201, 168, 76, 0.1);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-  }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 6rem;
-    align-items: start;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .stat-card {
-    padding: 1.8rem;
-    border: 1px solid rgba(201, 168, 76, 0.15);
-    border-radius: 4px;
-    background: rgba(255,255,255,0.02);
-    position: relative;
-    overflow: hidden;
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
-  }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .stat-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-
-  .about-text p {
-    margin-bottom: 1.4rem;
-    color: var(--text-body);
-    font-size: 1rem;
-  }
-
-  .about-text .highlight {
-    color: var(--white);
-    font-weight: 600;
-  }
-
-  .contractor-notice {
-    margin-top: 2rem;
-    padding: 1.2rem 1.6rem;
-    background: rgba(42, 127, 111, 0.08);
-    border-left: 3px solid var(--accent-teal);
-    border-radius: 0 4px 4px 0;
-    font-size: 0.88rem;
-    color: var(--text-dim);
-  }
-  .contractor-notice strong { color: var(--accent-teal-light); }
-
-  /* ─── SERVICES ─── */
-  .services { background: var(--navy); }
-  .services-intro { max-width: 1200px; margin: 0 auto; }
-  .services-intro-header { margin-bottom: 5rem; }
-
-  .services-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .service-pillar {
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: transform 0.4s, box-shadow 0.4s;
-    background: rgba(255,255,255,0.02);
-  }
-  .service-pillar:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  }
-
-  .pillar-header {
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .pillar-header-finops {
-    background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(201, 168, 76, 0.04) 100%);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-  }
-  .pillar-header-mortgage {
-    background: linear-gradient(135deg, rgba(42, 127, 111, 0.15) 0%, rgba(42, 127, 111, 0.04) 100%);
-    border-bottom: 1px solid rgba(42, 127, 111, 0.25);
-  }
-
-  .pillar-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .pillar-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.4rem;
-  }
-  .pillar-subtitle {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  .pillar-subtitle-finops { color: var(--gold); }
-  .pillar-subtitle-mortgage { color: var(--accent-teal-light); }
-
-  .pillar-body { padding: 2rem 2.5rem 2.5rem; }
-
-  .pillar-desc {
-    font-size: 0.92rem;
-    line-height: 1.8;
-    color: var(--text-body);
-    margin-bottom: 2rem;
-  }
-
-  .service-list { list-style: none; }
-  .service-list li {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.9rem;
-    font-size: 0.9rem;
-  }
-  .service-list li:last-child { border-bottom: none; }
-
-  .svc-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 0.55rem;
-  }
-  .svc-dot-gold { background: var(--gold); }
-  .svc-dot-teal { background: var(--accent-teal-light); }
-
-  .pillar-cta {
-    display: inline-block;
-    margin-top: 2rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 0.8rem 1.8rem;
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .pillar-cta-finops {
-    border: 1px solid var(--gold);
-    color: var(--gold);
-  }
-  .pillar-cta-finops:hover { background: var(--gold); color: var(--navy); }
-  .pillar-cta-mortgage {
-    border: 1px solid var(--accent-teal-light);
-    color: var(--accent-teal-light);
-  }
-  .pillar-cta-mortgage:hover { background: var(--accent-teal-light); color: var(--navy); }
-
-  /* ─── PROCESS ─── */
-  .process {
-    background: var(--deep);
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .process-inner { max-width: 1200px; margin: 0 auto; }
-  .process-header { margin-bottom: 4rem; }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-  }
-
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 2rem;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), var(--accent-teal), var(--gold), transparent);
-    opacity: 0.3;
-  }
-
-  .process-step {
-    padding: 0 1.5rem;
-    text-align: center;
-    position: relative;
-  }
-
-  .step-num {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--gold);
-    margin: 0 auto 1.5rem;
-    background: var(--deep);
-    position: relative;
-    z-index: 1;
-  }
-
-  .step-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.7rem;
-  }
-
-  .step-desc {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  /* ─── PRICING ─── */
-  .pricing { background: var(--navy); }
-  .pricing-inner { max-width: 1200px; margin: 0 auto; }
-
-  .pricing-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .tab-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.7rem 1.8rem;
-    border-radius: 2px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: transparent;
-    color: var(--slate);
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .tab-btn.active-gold { border-color: var(--gold); color: var(--gold); background: rgba(201, 168, 76, 0.08); }
-  .tab-btn.active-teal { border-color: var(--accent-teal-light); color: var(--accent-teal-light); background: rgba(42, 127, 111, 0.08); }
-  .tab-btn:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    display: none;
-  }
-  .pricing-grid.active { display: grid; }
-
-  .price-card {
-    padding: 2.5rem 2rem;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 4px;
-    background: rgba(255,255,255,0.02);
-    position: relative;
-    transition: all 0.3s;
-  }
-  .price-card:hover { transform: translateY(-4px); }
-  .price-card.featured {
-    border-color: rgba(201, 168, 76, 0.35);
-    background: rgba(201, 168, 76, 0.04);
-  }
-  .price-card.featured-teal {
-    border-color: rgba(42, 127, 111, 0.4);
-    background: rgba(42, 127, 111, 0.05);
-  }
-
-  .featured-label {
-    position: absolute;
-    top: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.3rem 1rem;
-    border-radius: 0 0 4px 4px;
-  }
-  .featured-label-gold { background: var(--gold); color: var(--navy); }
-  .featured-label-teal { background: var(--accent-teal); color: var(--white); }
-
-  .price-tier {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 1.2rem;
-  }
-
-  .price-amount {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-  .price-amount span {
-    font-size: 1rem;
-    color: var(--slate);
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 300;
-  }
-
-  .price-desc {
-    font-size: 0.82rem;
-    color: var(--text-dim);
-    margin-bottom: 1.8rem;
-    padding-bottom: 1.8rem;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    line-height: 1.6;
-  }
-
-  .price-features { list-style: none; }
-  .price-features li {
-    font-size: 0.85rem;
-    color: var(--text-body);
-    padding: 0.5rem 0;
-    display: flex;
-    gap: 0.7rem;
-    align-items: flex-start;
-  }
-  .price-features li::before { content: '✓'; color: var(--gold); font-size: 0.75rem; margin-top: 0.1rem; flex-shrink: 0; }
-  .price-features li.teal::before { color: var(--accent-teal-light); }
-
-  /* ─── WHY SECTION ─── */
-  .why {
-    background: var(--deep);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .why-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .why-points { margin-top: 3rem; }
-
-  .why-point {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-    align-items: start;
-  }
-
-  .why-icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    flex-shrink: 0;
-  }
-  .why-icon-gold { background: rgba(201, 168, 76, 0.12); border: 1px solid rgba(201, 168, 76, 0.25); }
-  .why-icon-teal { background: rgba(42, 127, 111, 0.12); border: 1px solid rgba(42, 127, 111, 0.3); }
-
-  .why-point-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.4rem;
-  }
-
-  .why-point-desc {
-    font-size: 0.88rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  /* Market panel */
-  .market-panel {
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .market-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .market-item:last-child { border-bottom: none; }
-
-  .market-label {
-    font-size: 0.88rem;
-    color: var(--slate);
-  }
-
-  .market-val {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .market-bar {
-    margin-top: 0.5rem;
-    height: 2px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-
-  .market-bar-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--gold), var(--accent-teal-light));
-    animation: barGrow 1.5s ease-out 0.5s both;
-  }
-
-  @keyframes barGrow {
-    from { width: 0; }
-    to { width: var(--w); }
-  }
-
-  /* ─── CONTACT ─── */
-  .contact { background: var(--navy); }
-  .contact-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 6rem;
-    align-items: start;
-  }
-
-  .contact-info { padding-top: 1rem; }
-
-  .contact-item {
-    display: flex;
-    gap: 1.2rem;
-    margin-bottom: 1.8rem;
-    align-items: flex-start;
-  }
-
-  .contact-icon {
-    font-size: 1.2rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 4px;
-    background: rgba(201, 168, 76, 0.1);
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .contact-item-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 0.3rem;
-  }
-
-  .contact-item-val {
-    font-size: 0.95rem;
-    color: var(--white);
-  }
-  .contact-item-val a { color: var(--white); text-decoration: none; }
-  .contact-item-val a:hover { color: var(--gold); }
-
-  /* Contact form */
-  .contact-form {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
-    padding: 2.5rem;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-  .form-group label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--slate);
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-    padding: 0.85rem 1rem;
-    color: var(--white);
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.9rem;
-    transition: border-color 0.3s;
-    outline: none;
-    resize: vertical;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: rgba(201, 168, 76, 0.5);
-  }
-  .form-group select option { background: var(--deep); }
-
-  .form-submit {
-    width: 100%;
-    padding: 1rem;
-    background: var(--gold);
-    color: var(--navy);
-    border: none;
-    border-radius: 3px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-  .form-submit:hover { background: var(--gold-light); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: #070f1d;
-    border-top: 1px solid rgba(201, 168, 76, 0.1);
-    padding: 3rem 4rem;
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    color: var(--gold);
-  }
-  .footer-brand span { color: var(--slate); font-size: 0.78rem; font-family: 'DM Mono', monospace; display: block; margin-top: 0.3rem; letter-spacing: 0.1em; }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-  .footer-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-links a:hover { color: var(--gold); }
-
-  .footer-copy {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    color: var(--text-dim);
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 1024px) {
-    nav { padding: 1.2rem 2rem; }
-    .hero, section { padding-left: 2rem; padding-right: 2rem; }
-    .hero-ornament { display: none; }
-    .about-grid, .services-split, .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    footer { padding: 2rem; }
-    .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
-    .nav-links { display: none; }
-  }
-
-  /* ─── DIVIDER ─── */
-  .divider {
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold), var(--accent-teal));
-    margin: 1.5rem 0 2rem;
-  }
+:root {
+  --navy:  #0b1628;
+  --deep:  #0f1c30;
+  --card:  #112035;
+  --gold:  #c9a84c;
+  --gold2: #e8c96e;
+  --teal:  #2a7f6f;
+  --teal2: #3aab97;
+  --slate: #8fa3bc;
+  --white: #ffffff;
+  --body:  #c0d2e6;
+  --dim:   #627a96;
+  --bdr:   rgba(255,255,255,0.07);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--navy);color:var(--body);overflow-x:hidden;line-height:1.75}
+
+/* noise overlay */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.5}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:900;padding:1.1rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(11,22,40,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.12)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold);text-decoration:none;letter-spacing:.04em}
+.nav-logo em{font-style:italic;color:var(--white)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.5rem 1.3rem;border-radius:2px;transition:background .25s!important}
+.nav-cta:hover{background:var(--gold2)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--slate);border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(11,22,40,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.1);padding:1.5rem 2rem;z-index:898;flex-direction:column;gap:1.2rem}
+.mobile-menu a{font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);text-decoration:none}
+.mobile-menu.open{display:flex}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 4rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 65% 45%,rgba(42,127,111,.13) 0%,transparent 60%),radial-gradient(ellipse 45% 70% at 5% 85%,rgba(201,168,76,.07) 0%,transparent 55%),linear-gradient(135deg,#0b1628 0%,#0d1e38 60%,#0b1628 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black 20%,transparent 100%)}
+.hero-content{position:relative;z-index:2;max-width:680px}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;display:flex;align-items:center;gap:.9rem;opacity:0;animation:fadeUp .7s .15s forwards}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);flex-shrink:0}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;line-height:1.06;color:var(--white);opacity:0;animation:fadeUp .7s .3s forwards}
+.hero-name em{display:block;font-style:italic;color:var(--gold)}
+.hero-role{font-family:'DM Mono',monospace;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal2);margin:.9rem 0 1.8rem;opacity:0;animation:fadeUp .7s .45s forwards}
+.hero-desc{font-size:1.02rem;color:var(--body);max-width:540px;line-height:1.85;margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .6s forwards}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2.8rem;opacity:0;animation:fadeUp .7s .75s forwards}
+.chip{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:.38rem .9rem;border-radius:2px;border:1px solid}
+.chip-g{border-color:rgba(201,168,76,.35);color:var(--gold)}
+.chip-t{border-color:rgba(42,127,111,.45);color:var(--teal2)}
+.chip-s{border-color:rgba(143,163,188,.25);color:var(--slate)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .9s forwards}
+.btn-pri{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;padding:.9rem 2rem;background:var(--gold);color:var(--navy);border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;font-weight:500}
+.btn-pri:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,168,76,.28)}
+.btn-sec{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;padding:.9rem 2rem;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-sec:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* floating ring ornament */
+.hero-orn{position:absolute;right:4rem;top:50%;transform:translateY(-50%);opacity:0;animation:fadeIn 1s 1.2s forwards;pointer-events:none}
+.ring{width:340px;height:340px;border-radius:50%;border:1px solid rgba(201,168,76,.12);position:relative;display:flex;align-items:center;justify-content:center}
+.ring::before{content:'';position:absolute;inset:22px;border-radius:50%;border:1px solid rgba(42,127,111,.18)}
+.ring::after{content:'';position:absolute;inset:44px;border-radius:50%;border:1px solid rgba(201,168,76,.08)}
+.ring-inner{width:200px;height:200px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(42,127,111,.14) 0%,rgba(11,22,40,.55) 100%);border:1px solid rgba(42,127,111,.28);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.3rem;position:relative;z-index:1}
+.ring-num{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;color:var(--gold);line-height:1}
+.ring-lbl{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.rdot{position:absolute;border-radius:50%}
+.rdot1{width:7px;height:7px;background:var(--gold);top:18px;left:50%;transform:translateX(-50%)}
+.rdot2{width:6px;height:6px;background:var(--teal2);bottom:22px;right:58px}
+.rdot3{width:4px;height:4px;background:var(--slate);top:50%;left:12px;transform:translateY(-50%)}
+
+/* ── SHARED SECTION STYLES ── */
+section{padding:6.5rem 4rem}
+.sec-tag{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.75rem}
+.sec-tag::before{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;color:var(--white);line-height:1.18}
+.sec-h em{font-style:italic;color:var(--gold)}
+.divider{width:52px;height:2px;background:linear-gradient(90deg,var(--gold),var(--teal2));margin:1.4rem 0 2rem}
+.inner{max-width:1180px;margin:0 auto}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}
+.rv-d2{transition-delay:.2s}
+.rv-d3{transition-delay:.3s}
+.rv-d4{transition-delay:.4s}
+
+/* ── ABOUT ── */
+.about{background:var(--deep);border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08)}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5.5rem;align-items:start}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem}
+.s-card{padding:1.6rem;border:1px solid rgba(201,168,76,.14);border-radius:4px;background:rgba(255,255,255,.02);position:relative;overflow:hidden}
+.s-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.s-num{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.s-lbl{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.about-p{font-size:.97rem;line-height:1.85;margin-bottom:1.3rem;color:var(--body)}
+.about-p .hl{color:var(--white);font-weight:600}
+.notice{margin-top:1.8rem;padding:1.1rem 1.4rem;background:rgba(42,127,111,.07);border-left:3px solid var(--teal);border-radius:0 4px 4px 0;font-size:.86rem;color:var(--dim)}
+.notice strong{color:var(--teal2)}
+
+/* ── SERVICES ── */
+.services{background:var(--navy)}
+.svc-intro{margin-bottom:4rem}
+.svc-intro p{max-width:560px;font-size:.95rem;color:var(--dim);line-height:1.8;margin-top:1rem}
+
+/* service category cards */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.svc-cat{border:1px solid var(--bdr);border-radius:6px;overflow:hidden;background:rgba(255,255,255,.02);transition:transform .35s,box-shadow .35s}
+.svc-cat:hover{transform:translateY(-5px);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.svc-cat-head{padding:2rem 2rem 1.5rem;position:relative;overflow:hidden}
+.svc-cat-head.excel{background:linear-gradient(135deg,rgba(201,168,76,.1) 0%,rgba(201,168,76,.03) 100%);border-bottom:1px solid rgba(201,168,76,.18)}
+.svc-cat-head.ap{background:linear-gradient(135deg,rgba(74,127,203,.1) 0%,rgba(74,127,203,.03) 100%);border-bottom:1px solid rgba(74,127,203,.18)}
+.svc-cat-head.mortgage{background:linear-gradient(135deg,rgba(42,127,111,.12) 0%,rgba(42,127,111,.03) 100%);border-bottom:1px solid rgba(42,127,111,.22)}
+.svc-icon{font-size:2.2rem;margin-bottom:.9rem;display:block}
+.svc-cat-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.svc-cat-sub{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase}
+.sub-gold{color:var(--gold)}
+.sub-blue{color:#6a9fe0}
+.sub-teal{color:var(--teal2)}
+.svc-cat-body{padding:1.6rem 2rem 2rem}
+.svc-cat-desc{font-size:.88rem;line-height:1.8;color:var(--body);margin-bottom:1.6rem}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.svc-list li{font-size:.86rem;padding:.62rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:.75rem;line-height:1.5}
+.svc-list li:last-child{border-bottom:none}
+.dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:.48rem}
+.dot-g{background:var(--gold)}
+.dot-b{background:#6a9fe0}
+.dot-t{background:var(--teal2)}
+
+/* ── CLIENTS ── */
+.clients{background:var(--deep);border-top:1px solid var(--bdr)}
+.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:3.5rem}
+.client-card{padding:1.8rem 1.5rem;border:1px solid var(--bdr);border-radius:4px;background:rgba(255,255,255,.02);text-align:center;transition:border-color .3s,background .3s}
+.client-card:hover{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.03)}
+.client-icon{font-size:2rem;margin-bottom:.9rem;display:block}
+.client-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
+.client-desc{font-size:.82rem;color:var(--dim);line-height:1.65}
+
+/* ── PROCESS ── */
+.process{background:var(--navy);border-top:1px solid var(--bdr)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:3.5rem}
+.steps::before{content:'';position:absolute;top:1.85rem;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--teal2),var(--gold),transparent);opacity:.25}
+.step{padding:0 1.2rem;text-align:center}
+.step-n{width:3.7rem;height:3.7rem;border-radius:50%;border:1px solid rgba(201,168,76,.28);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);margin:0 auto 1.4rem;background:var(--navy);position:relative;z-index:1}
+.step-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.6rem}
+.step-d{font-size:.83rem;color:var(--dim);line-height:1.7}
+
+/* ── PRICING ── */
+.pricing{background:var(--deep);border-top:1px solid var(--bdr)}
+.price-tabs{display:flex;gap:.8rem;margin-bottom:3rem;flex-wrap:wrap}
+.ptab{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.62rem 1.5rem;border-radius:2px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--dim);cursor:pointer;transition:all .25s}
+.ptab:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
+.ptab.ag{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.07)}
+.ptab.at{border-color:var(--teal2);color:var(--teal2);background:rgba(42,127,111,.07)}
+.ptab.ab{border-color:#6a9fe0;color:#6a9fe0;background:rgba(74,127,203,.07)}
+.pgrid{display:none;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.pgrid.show{display:grid}
+.pcard{padding:2.2rem 1.8rem;border:1px solid var(--bdr);border-radius:4px;background:rgba(255,255,255,.02);position:relative;transition:transform .3s}
+.pcard:hover{transform:translateY(-4px)}
+.pcard.feat-g{border-color:rgba(201,168,76,.32);background:rgba(201,168,76,.04)}
+.pcard.feat-t{border-color:rgba(42,127,111,.36);background:rgba(42,127,111,.05)}
+.pcard.feat-b{border-color:rgba(74,127,203,.32);background:rgba(74,127,203,.04)}
+.feat-tag{position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;padding:.28rem .9rem;border-radius:0 0 4px 4px}
+.ftg{background:var(--gold);color:var(--navy)}
+.ftt{background:var(--teal);color:var(--white)}
+.ftb{background:#4a7fcb;color:var(--white)}
+.p-tier{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem}
+.p-amt{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:.35rem}
+.p-amt span{font-size:.9rem;color:var(--dim);font-family:'Nunito Sans',sans-serif;font-weight:300}
+.p-desc{font-size:.8rem;color:var(--dim);line-height:1.65;margin-bottom:1.6rem;padding-bottom:1.6rem;border-bottom:1px solid var(--bdr)}
+.p-feats{list-style:none}
+.p-feats li{font-size:.83rem;padding:.45rem 0;display:flex;gap:.6rem;align-items:flex-start}
+.p-feats li::before{content:'✓';flex-shrink:0;margin-top:.05rem;font-size:.72rem}
+.p-feats li.cg::before{color:var(--gold)}
+.p-feats li.ct::before{color:var(--teal2)}
+.p-feats li.cb::before{color:#6a9fe0}
+
+/* ── WHY ── */
+.why{background:var(--navy);border-top:1px solid var(--bdr)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.why-pts{margin-top:2.5rem;display:flex;flex-direction:column;gap:2.2rem}
+.why-pt{display:grid;grid-template-columns:auto 1fr;gap:1.3rem;align-items:start}
+.why-ico{width:2.8rem;height:2.8rem;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ico-g{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+.ico-t{background:rgba(42,127,111,.1);border:1px solid rgba(42,127,111,.25)}
+.ico-b{background:rgba(74,127,203,.1);border:1px solid rgba(74,127,203,.22)}
+.why-pt-t{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.35rem}
+.why-pt-d{font-size:.86rem;color:var(--dim);line-height:1.72}
+.market-panel{padding:2.2rem;border:1px solid var(--bdr);border-radius:6px;background:rgba(255,255,255,.02)}
+.mkt-item{display:flex;align-items:center;justify-content:space-between;padding:.95rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.mkt-item:last-child{border-bottom:none}
+.mkt-lbl{font-size:.86rem;color:var(--slate)}
+.mkt-val{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white)}
+.mkt-bar{height:2px;background:rgba(255,255,255,.05);border-radius:2px;margin:.4rem 0 .8rem}
+.mkt-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--teal2));animation:barGrow 1.4s ease-out .4s both}
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+
+/* ── CONTACT ── */
+.contact{background:var(--deep);border-top:1px solid rgba(201,168,76,.08)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5.5rem;align-items:start}
+.c-item{display:flex;gap:1.1rem;margin-bottom:1.6rem;align-items:flex-start}
+.c-ico{width:2.4rem;height:2.4rem;border-radius:4px;background:rgba(201,168,76,.09);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.c-ttl{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:.25rem}
+.c-val{font-size:.92rem;color:var(--white)}
+.c-val a{color:var(--white);text-decoration:none;transition:color .25s}
+.c-val a:hover{color:var(--gold)}
+.cform{background:rgba(255,255,255,.02);border:1px solid var(--bdr);border-radius:6px;padding:2.2rem}
+.cform h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--white);margin-bottom:1.8rem}
+.fg{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1rem}
+.fg label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--slate)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:3px;padding:.78rem .95rem;color:var(--white);font-family:'Nunito Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .28s;resize:vertical;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(201,168,76,.45)}
+.fg select option{background:var(--deep)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+#form-success{display:none;padding:1.3rem;background:rgba(42,127,111,.1);border:1px solid rgba(42,127,111,.35);border-radius:4px;margin-bottom:1.2rem}
+#form-error{display:none;padding:.75rem 1rem;background:rgba(200,50,50,.1);border:1px solid rgba(200,50,50,.28);border-radius:3px;margin-bottom:1rem;font-size:.84rem;color:#e07070}
+.sub-btn{width:100%;padding:.95rem;background:var(--gold);color:var(--navy);border:none;border-radius:3px;font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .3s;font-weight:500}
+.sub-btn:hover{background:var(--gold2)}
+
+/* ── FOOTER ── */
+footer{background:#060e1c;border-top:1px solid rgba(201,168,76,.09);padding:2.5rem 4rem}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.foot-brand{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--gold)}
+.foot-brand span{display:block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:.25rem}
+.foot-links{display:flex;gap:2rem;list-style:none}
+.foot-links a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .25s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--dim)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .clients-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .pgrid{grid-template-columns:1fr}
+  .why-grid,.contact-grid,.about-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-orn{display:none}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  section{padding:5rem 1.5rem}
+  .hero{padding:0 1.5rem}
+  .svc-grid{grid-template-columns:1fr}
+  .clients-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:2rem 1.5rem}
+  .foot-inner{flex-direction:column;align-items:flex-start}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .price-tabs{flex-direction:column}
+}
+@media(max-width:480px){
+  .clients-grid,.steps{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .hero-chips{flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Navneet <span>Priye Chauhan</span></a>
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Navneet <em>Priye Chauhan</em></a>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
+    <li><a href="#clients">Clients</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#why">Why Me</a></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
+  <div class="hamburger" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-menu" id="mob-menu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#clients" onclick="closeMenu()">Clients</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#contact" onclick="closeMenu()">Hire Me →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
+  <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Independent Financial Operations Specialist</div>
+    <div class="eyebrow">Finance &amp; Operations Consultant</div>
     <h1 class="hero-name">Navneet<em>Priye Chauhan</em></h1>
-    <div class="hero-title">Excel Automation · US Mortgage QC · Financial Back-Office</div>
-    <p class="hero-desc">
-      A decade of deep finance operations experience — building Excel tools that replace manual chaos for Indian NBFCs, and delivering US mortgage QC with enterprise-grade precision for small lenders who deserve better.
-    </p>
-    <div class="hero-badges">
-      <span class="badge badge-gold">10+ Years Finance Ops</span>
-      <span class="badge badge-teal">US Mortgage Certified QC</span>
-      <span class="badge badge-slate">Lucknow, India · Remote-First</span>
+    <div class="hero-role">Excel Automation · Accounts Payable · US Mortgage QC</div>
+    <p class="hero-desc">A decade of hands-on finance operations experience — delivering advanced Excel solutions, streamlined AP workflows, and enterprise-grade US mortgage QC to clients across India, the US, and beyond.</p>
+    <div class="hero-chips">
+      <span class="chip chip-g">10+ Years Finance Ops</span>
+      <span class="chip chip-t">Advanced Excel &amp; VBA</span>
+      <span class="chip chip-t">US Mortgage QC</span>
+      <span class="chip chip-s">Remote · Worldwide</span>
     </div>
-    <div class="hero-cta-group">
-      <a href="#services" class="btn-primary">Explore Services</a>
-      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    <div class="hero-btns">
+      <a href="#services" class="btn-pri">View Services</a>
+      <a href="#contact" class="btn-sec">Get in Touch</a>
     </div>
   </div>
-  <div class="hero-ornament">
-    <div class="ornament-ring">
-      <div class="dot dot-1"></div>
-      <div class="dot dot-2"></div>
-      <div class="dot dot-3"></div>
-      <div class="ornament-inner">
-        <div class="ornament-num">10+</div>
-        <div class="ornament-label">Years of<br>Finance Ops</div>
+  <div class="hero-orn">
+    <div class="ring">
+      <div class="rdot rdot1"></div>
+      <div class="rdot rdot2"></div>
+      <div class="rdot rdot3"></div>
+      <div class="ring-inner">
+        <div class="ring-num">10+</div>
+        <div class="ring-lbl">Years of<br>Finance Ops</div>
       </div>
     </div>
   </div>
@@ -1082,36 +330,24 @@
 
 <!-- ABOUT -->
 <section class="about" id="about">
-  <div class="about-grid">
-    <div class="reveal">
-      <div class="section-tag">About</div>
-      <h2 class="section-heading">Finance-first.<br><em>Excel-powered.</em></h2>
-      <div class="divider"></div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Specialisations</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Tools You Own</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">₹0</div>
-          <div class="stat-label">Recurring Fees</div>
+  <div class="inner">
+    <div class="about-grid">
+      <div class="rv">
+        <div class="sec-tag">About</div>
+        <h2 class="sec-h">Finance-first.<br><em>Precision-driven.</em></h2>
+        <div class="divider"></div>
+        <div class="about-stats">
+          <div class="s-card"><div class="s-num">10+</div><div class="s-lbl">Years Experience</div></div>
+          <div class="s-card"><div class="s-num">3</div><div class="s-lbl">Core Disciplines</div></div>
+          <div class="s-card"><div class="s-num">∞</div><div class="s-lbl">Tools You Own</div></div>
+          <div class="s-card"><div class="s-num">0</div><div class="s-lbl">Recurring Fees</div></div>
         </div>
       </div>
-    </div>
-    <div class="reveal about-text">
-      <p>I am <span class="highlight">Navneet Priye Chauhan</span>, an independent financial operations contractor based in Lucknow, India, with over a decade of hands-on experience in mortgage funding, pre-closing quality control, portfolio management, accounts payable, and investor reporting.</p>
-      <p>Most freelancers are Excel developers who learned about finance. I am a <span class="highlight">finance operations professional who mastered Excel</span> — and that distinction changes everything for my clients. I understand your workflows, your compliance pressures, and your operational realities before I write a single formula.</p>
-      <p>I offer two focused service lines: <span class="highlight">FinOps Excel Studio</span> for Indian financial companies seeking custom Excel automation, and <span class="highlight">MortgageOps India</span> for US mortgage lenders and brokers needing remote QC and back-office support.</p>
-      <div class="contractor-notice">
-        <strong>Operating as Independent Contractor.</strong> GST and business registrations are in process. All engagements are governed by a signed service agreement and formal invoice. US clients are invoiced in USD.
+      <div class="rv rv-d2">
+        <p class="about-p">I am <span class="hl">Navneet Priye Chauhan</span>, an independent Finance &amp; Operations Consultant based in Lucknow, India, with over a decade of deep, hands-on experience across financial operations, Excel automation, accounts payable, and US mortgage quality control.</p>
+        <p class="about-p">Most freelancers are technical specialists who learned about finance. I am a <span class="hl">finance operations professional who mastered the tools</span> — including advanced Excel, VBA, and mortgage LOS platforms. That means I understand your workflows, your compliance pressures, and your operational realities before writing a single formula or reviewing a single loan file.</p>
+        <p class="about-p">I work directly with clients across India, the United States, and internationally — bringing enterprise-grade rigour to businesses of every size, without the enterprise price tag.</p>
+        <div class="notice"><strong>Operating as Independent Contractor.</strong> GST and business registrations are in progress. All engagements are covered by a signed service agreement and formal invoice. US clients are invoiced in USD.</div>
       </div>
     </div>
   </div>
@@ -1119,53 +355,113 @@
 
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="services-intro">
-    <div class="services-intro-header reveal">
-      <div class="section-tag">What I Do</div>
-      <h2 class="section-heading">Two specialisations.<br><em>One expert.</em></h2>
+  <div class="inner">
+    <div class="svc-intro rv">
+      <div class="sec-tag">What I Do</div>
+      <h2 class="sec-h">One expert.<em>Three disciplines.</em></h2>
       <div class="divider"></div>
-      <p style="max-width: 560px; color: var(--text-dim); font-size: 0.95rem; line-height: 1.8;">Whether you run an Indian NBFC drowning in manual spreadsheets, or a US mortgage shop needing reliable remote QC — I deliver precise, professional solutions you can own forever.</p>
+      <p>From advanced Excel automation to AP process design and US mortgage QC — every service is delivered personally, with deep domain knowledge and zero middlemen.</p>
     </div>
-    <div class="services-split">
-      <!-- FinOps -->
-      <div class="service-pillar reveal">
-        <div class="pillar-header pillar-header-finops">
-          <span class="pillar-icon">📊</span>
-          <div class="pillar-title">FinOps Excel Studio</div>
-          <div class="pillar-subtitle pillar-subtitle-finops">Excel Automation · India Market</div>
+    <div class="svc-grid">
+
+      <!-- Excel -->
+      <div class="svc-cat rv rv-d1">
+        <div class="svc-cat-head excel">
+          <span class="svc-icon">📊</span>
+          <div class="svc-cat-title">Excel Automation &amp; Financial Modeling</div>
+          <div class="svc-cat-sub sub-gold">Advanced Excel · VBA · Dashboards</div>
         </div>
-        <div class="pillar-body">
-          <p class="pillar-desc">Custom Excel-based financial automation for NBFCs, MFIs, cooperative banks, fintech startups, and CA firms — delivered as fully documented workbooks you own permanently, at a fraction of ERP costs.</p>
-          <ul class="service-list">
-            <li><span class="svc-dot svc-dot-gold"></span>Loan Portfolio & EMI Tracking Systems</li>
-            <li><span class="svc-dot svc-dot-gold"></span>Accounts Payable Automation Suites</li>
-            <li><span class="svc-dot svc-dot-gold"></span>Financial Dashboards & KPI Reporting</li>
-            <li><span class="svc-dot svc-dot-gold"></span>Bank Reconciliation & MIS Automation</li>
-            <li><span class="svc-dot svc-dot-gold"></span>Investor & Regulatory Reporting Tools</li>
-            <li><span class="svc-dot svc-dot-gold"></span>Excel Audit & Cleanup Services</li>
+        <div class="svc-cat-body">
+          <p class="svc-cat-desc">Custom, fully documented Excel solutions for any business — built to replace manual processes, eliminate errors, and give you tools you own permanently.</p>
+          <ul class="svc-list">
+            <li><span class="dot dot-g"></span>Custom financial models &amp; scenario analysis</li>
+            <li><span class="dot dot-g"></span>Automated dashboards &amp; KPI reporting</li>
+            <li><span class="dot dot-g"></span>Loan portfolio &amp; EMI tracking systems</li>
+            <li><span class="dot dot-g"></span>MIS reports &amp; management packs</li>
+            <li><span class="dot dot-g"></span>Data cleaning, transformation &amp; consolidation</li>
+            <li><span class="dot dot-g"></span>VBA / macro automation</li>
+            <li><span class="dot dot-g"></span>Excel audit, repair &amp; restructuring</li>
+            <li><span class="dot dot-g"></span>Investor &amp; regulatory reporting tools</li>
           </ul>
-          <a href="#contact" class="pillar-cta pillar-cta-finops">Request Excel Audit →</a>
         </div>
       </div>
-      <!-- MortgageOps -->
-      <div class="service-pillar reveal">
-        <div class="pillar-header pillar-header-mortgage">
-          <span class="pillar-icon">🏠</span>
-          <div class="pillar-title">MortgageOps India</div>
-          <div class="pillar-subtitle pillar-subtitle-mortgage">US Mortgage QC · Remote Back-Office</div>
+
+      <!-- AP -->
+      <div class="svc-cat rv rv-d2">
+        <div class="svc-cat-head ap">
+          <span class="svc-icon">🧾</span>
+          <div class="svc-cat-title">Accounts Payable &amp; Finance Operations</div>
+          <div class="svc-cat-sub sub-blue">AP Automation · Reconciliation · Month-End</div>
         </div>
-        <div class="pillar-body">
-          <p class="pillar-desc">Enterprise-grade US mortgage QC and back-office support for small IMBs, community lenders, and mortgage brokers — delivered remotely from India with per-file or retainer pricing that fits your volume.</p>
-          <ul class="service-list">
-            <li><span class="svc-dot svc-dot-teal"></span>Pre-Funding Quality Control Review</li>
-            <li><span class="svc-dot svc-dot-teal"></span>Closing Package Audit (CD/HUD Validation)</li>
-            <li><span class="svc-dot svc-dot-teal"></span>TRID, RESPA & Reg Z Compliance Checks</li>
-            <li><span class="svc-dot svc-dot-teal"></span>Document Deficiency & Stacking Review</li>
-            <li><span class="svc-dot svc-dot-teal"></span>Post-Closing File Audit</li>
-            <li><span class="svc-dot svc-dot-teal"></span>Pipeline Tracking & Reporting</li>
+        <div class="svc-cat-body">
+          <p class="svc-cat-desc">End-to-end AP process design and finance operations support — bringing structure, accuracy, and efficiency to your back office.</p>
+          <ul class="svc-list">
+            <li><span class="dot dot-b"></span>AP workflow design &amp; automation</li>
+            <li><span class="dot dot-b"></span>Invoice processing &amp; 3-way matching</li>
+            <li><span class="dot dot-b"></span>Vendor reconciliation &amp; ledger clean-up</li>
+            <li><span class="dot dot-b"></span>Month-end close support &amp; checklists</li>
+            <li><span class="dot dot-b"></span>Cash flow tracking &amp; forecasting</li>
+            <li><span class="dot dot-b"></span>Expense report automation</li>
+            <li><span class="dot dot-b"></span>Bank reconciliation &amp; statement analysis</li>
+            <li><span class="dot dot-b"></span>Finance SOP creation &amp; documentation</li>
           </ul>
-          <a href="#contact" class="pillar-cta pillar-cta-mortgage">Get a Free TRID Checklist →</a>
         </div>
+      </div>
+
+      <!-- Mortgage -->
+      <div class="svc-cat rv rv-d3">
+        <div class="svc-cat-head mortgage">
+          <span class="svc-icon">🏠</span>
+          <div class="svc-cat-title">US Mortgage QC &amp; Documentation</div>
+          <div class="svc-cat-sub sub-teal">Pre-Funding QC · TRID · Compliance</div>
+        </div>
+        <div class="svc-cat-body">
+          <p class="svc-cat-desc">Enterprise-grade mortgage quality control and documentation review for US lenders, brokers, and banks — delivered remotely with per-file or retainer pricing.</p>
+          <ul class="svc-list">
+            <li><span class="dot dot-t"></span>Pre-funding quality control review</li>
+            <li><span class="dot dot-t"></span>Closing package &amp; CD audit</li>
+            <li><span class="dot dot-t"></span>TRID, RESPA &amp; Reg Z compliance checks</li>
+            <li><span class="dot dot-t"></span>Document deficiency &amp; stacking review</li>
+            <li><span class="dot dot-t"></span>Loan file documentation audit</li>
+            <li><span class="dot dot-t"></span>Post-closing file review</li>
+            <li><span class="dot dot-t"></span>Pipeline tracking &amp; status reporting</li>
+            <li><span class="dot dot-t"></span>QC checklist design for lender teams</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="inner">
+    <div class="rv">
+      <div class="sec-tag">Who I Work With</div>
+      <h2 class="sec-h">Built for businesses<em>of every size.</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card rv rv-d1">
+        <span class="client-icon">🏦</span>
+        <div class="client-title">US Mortgage Lenders &amp; Brokers</div>
+        <p class="client-desc">IMBs, community banks, and mortgage brokers who need reliable remote QC without the overhead of a full in-house team or the volume minimums of large BPOs.</p>
+      </div>
+      <div class="client-card rv rv-d2">
+        <span class="client-icon">📋</span>
+        <div class="client-title">Indian NBFCs &amp; Financial Firms</div>
+        <p class="client-desc">NBFCs, MFIs, cooperative banks, and fintech startups running critical operations on manual spreadsheets — who need structure, automation, and reliability.</p>
+      </div>
+      <div class="client-card rv rv-d3">
+        <span class="client-icon">🌐</span>
+        <div class="client-title">Accounting &amp; CA Firms</div>
+        <p class="client-desc">Chartered accountants and accounting firms internationally looking to automate client reporting, AP processes, and financial workbooks at scale.</p>
+      </div>
+      <div class="client-card rv rv-d4">
+        <span class="client-icon">⚙️</span>
+        <div class="client-title">Any Business, Excel-First</div>
+        <p class="client-desc">Any company — regardless of sector or geography — that relies on Excel and wants to upgrade from manual, error-prone spreadsheets to clean, automated financial tools.</p>
       </div>
     </div>
   </div>
@@ -1173,32 +469,32 @@
 
 <!-- PROCESS -->
 <section class="process" id="process">
-  <div class="process-inner">
-    <div class="process-header reveal">
-      <div class="section-tag">How It Works</div>
-      <h2 class="section-heading">Simple. Structured.<em>Reliable.</em></h2>
+  <div class="inner">
+    <div class="rv">
+      <div class="sec-tag">How It Works</div>
+      <h2 class="sec-h">Simple. Structured.<em>Reliable.</em></h2>
       <div class="divider"></div>
     </div>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="step-num">01</div>
-        <div class="step-title">Discovery Call</div>
-        <p class="step-desc">We discuss your operations, pain points, and goals. I review your existing workflows and identify gaps — at no charge.</p>
+    <div class="steps">
+      <div class="step rv rv-d1">
+        <div class="step-n">01</div>
+        <div class="step-t">Discovery Call</div>
+        <p class="step-d">We discuss your operations, pain points, and goals. I review your existing workflows and identify gaps — at no charge.</p>
       </div>
-      <div class="process-step reveal">
-        <div class="step-num">02</div>
-        <div class="step-title">Scoped Proposal</div>
-        <p class="step-desc">You receive a clear written proposal with deliverables, timelines, and fixed pricing. No hidden fees, no surprises.</p>
+      <div class="step rv rv-d2">
+        <div class="step-n">02</div>
+        <div class="step-t">Scoped Proposal</div>
+        <p class="step-d">You receive a clear written proposal with deliverables, timelines, and fixed pricing. No surprises, no hidden costs.</p>
       </div>
-      <div class="process-step reveal">
-        <div class="step-num">03</div>
-        <div class="step-title">Build & Review</div>
-        <p class="step-desc">I build, test, and refine your solution with milestone check-ins. For QC work, secure file portals protect your data throughout.</p>
+      <div class="step rv rv-d3">
+        <div class="step-n">03</div>
+        <div class="step-t">Build &amp; Review</div>
+        <p class="step-d">I build and test with regular check-ins. You get milestone updates via your private client portal — visible anytime.</p>
       </div>
-      <div class="process-step reveal">
-        <div class="step-num">04</div>
-        <div class="step-title">Deliver & Support</div>
-        <p class="step-desc">You receive a fully documented deliverable you own. Post-delivery support is included — I don't disappear after handoff.</p>
+      <div class="step rv rv-d4">
+        <div class="step-n">04</div>
+        <div class="step-t">Deliver &amp; Support</div>
+        <p class="step-d">Fully documented deliverables you own forever. Post-delivery support is included — I don't disappear after handoff.</p>
       </div>
     </div>
   </div>
@@ -1206,171 +502,202 @@
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
-  <div class="pricing-inner">
-    <div class="reveal">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-heading">Transparent.<em>Flexible.</em></h2>
+  <div class="inner">
+    <div class="rv">
+      <div class="sec-tag">Pricing</div>
+      <h2 class="sec-h">Transparent.<em>Flexible.</em></h2>
       <div class="divider"></div>
-      <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 2.5rem; max-width: 500px;">Indicative pricing. Every project is scoped individually. Contact me for a precise quote.</p>
+      <p style="color:var(--dim);font-size:.92rem;max-width:500px;margin-bottom:2.5rem;">Indicative pricing — every project is scoped individually. Contact me for a precise quote based on your specific requirements.</p>
     </div>
-    <div class="pricing-tabs reveal">
-      <button class="tab-btn active-gold" onclick="switchTab('finops', this)">FinOps Excel Studio (INR)</button>
-      <button class="tab-btn" onclick="switchTab('mortgage', this)">MortgageOps India (USD)</button>
+    <div class="price-tabs rv">
+      <button class="ptab ag" onclick="switchPTab('excel',this)">Excel &amp; Financial Modeling</button>
+      <button class="ptab" onclick="switchPTab('ap',this)">Accounts Payable &amp; Finance Ops</button>
+      <button class="ptab" onclick="switchPTab('mortgage',this)">US Mortgage QC</button>
     </div>
 
-    <!-- FinOps Pricing -->
-    <div class="pricing-grid active" id="tab-finops">
-      <div class="price-card reveal">
-        <div class="price-tier">Starter</div>
-        <div class="price-amount">₹15K <span>/ project</span></div>
-        <p class="price-desc">Single-module Excel tools for small teams. Ideal for a basic loan tracker or simple AP automation.</p>
-        <ul class="price-features">
-          <li>1 functional workbook</li>
-          <li>Data validation & error-proofing</li>
-          <li>Basic dashboard / summary sheet</li>
-          <li>1-week delivery</li>
-          <li>30-day support</li>
+    <!-- Excel Pricing -->
+    <div class="pgrid show" id="pt-excel">
+      <div class="pcard rv">
+        <div class="p-tier">Starter</div>
+        <div class="p-amt">₹12K–20K <span>/ project</span></div>
+        <p class="p-desc">Single-purpose Excel tool — a clean tracker, simple dashboard, or data model for a small team.</p>
+        <ul class="p-feats">
+          <li class="cg">1 functional workbook</li>
+          <li class="cg">Data validation &amp; error-proofing</li>
+          <li class="cg">Summary sheet / basic dashboard</li>
+          <li class="cg">1–2 week delivery</li>
+          <li class="cg">30-day support</li>
         </ul>
       </div>
-      <div class="price-card featured reveal">
-        <div class="featured-label featured-label-gold">Most Popular</div>
-        <div class="price-tier">Professional</div>
-        <div class="price-amount">₹35K–60K <span>/ project</span></div>
-        <p class="price-desc">Multi-module automation suite for NBFCs and MFIs — full loan portfolio, reconciliation, and reporting.</p>
-        <ul class="price-features">
-          <li>Multi-sheet integrated workbook</li>
-          <li>Automated reconciliation logic</li>
-          <li>Interactive dashboard & KPIs</li>
-          <li>2–3 week delivery</li>
-          <li>60-day support</li>
-          <li>Staff walkthrough session</li>
+      <div class="pcard feat-g rv rv-d1">
+        <div class="feat-tag ftg">Most Popular</div>
+        <div class="p-tier">Professional</div>
+        <div class="p-amt">₹30K–65K <span>/ project</span></div>
+        <p class="p-desc">Multi-module automation suite — integrated workbooks with reconciliation, reporting, and interactive dashboards.</p>
+        <ul class="p-feats">
+          <li class="cg">Multi-sheet integrated workbook</li>
+          <li class="cg">Automated reconciliation logic</li>
+          <li class="cg">Interactive KPI dashboard</li>
+          <li class="cg">VBA / macro automation</li>
+          <li class="cg">2–4 week delivery</li>
+          <li class="cg">60-day support &amp; walkthrough</li>
         </ul>
       </div>
-      <div class="price-card reveal">
-        <div class="price-tier">Enterprise</div>
-        <div class="price-amount">₹80K+ <span>/ project</span></div>
-        <p class="price-desc">Complex end-to-end systems for larger operations — investor reporting, full MIS, or multi-department tools.</p>
-        <ul class="price-features">
-          <li>Full ops system design</li>
-          <li>Multi-user workbook architecture</li>
-          <li>VBA / macro automation</li>
-          <li>Custom project timeline</li>
-          <li>90-day support & iterations</li>
-          <li>Ongoing retainer available</li>
+      <div class="pcard rv rv-d2">
+        <div class="p-tier">Enterprise</div>
+        <div class="p-amt">₹80K+ <span>/ project</span></div>
+        <p class="p-desc">Full-scale financial systems — complex models, investor reporting suites, or company-wide MIS architecture.</p>
+        <ul class="p-feats">
+          <li class="cg">Full operational system design</li>
+          <li class="cg">Multi-user workbook architecture</li>
+          <li class="cg">Advanced VBA &amp; automation</li>
+          <li class="cg">Custom timeline &amp; phased delivery</li>
+          <li class="cg">90-day support</li>
+          <li class="cg">Ongoing retainer available</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AP Pricing -->
+    <div class="pgrid" id="pt-ap">
+      <div class="pcard rv">
+        <div class="p-tier">One-Time Project</div>
+        <div class="p-amt">₹20K–40K <span>/ project</span></div>
+        <p class="p-desc">AP workflow audit, clean-up, and documented process for a small business or startup.</p>
+        <ul class="p-feats">
+          <li class="cb">Full AP process audit</li>
+          <li class="cb">Vendor reconciliation clean-up</li>
+          <li class="cb">Automated invoice tracker (Excel)</li>
+          <li class="cb">SOP documentation</li>
+          <li class="cb">2–3 week delivery</li>
+        </ul>
+      </div>
+      <div class="pcard feat-b rv rv-d1">
+        <div class="feat-tag ftb">Best Value</div>
+        <div class="p-tier">Monthly Retainer</div>
+        <div class="p-amt">₹25K–50K <span>/ month</span></div>
+        <p class="p-desc">Ongoing AP operations support — process management, reconciliation, and month-end close assistance.</p>
+        <ul class="p-feats">
+          <li class="cb">AP transaction processing</li>
+          <li class="cb">Monthly bank reconciliation</li>
+          <li class="cb">Vendor statement matching</li>
+          <li class="cb">Month-end close support</li>
+          <li class="cb">Cash flow reporting</li>
+          <li class="cb">Priority response</li>
+        </ul>
+      </div>
+      <div class="pcard rv rv-d2">
+        <div class="p-tier">US-Based (USD)</div>
+        <div class="p-amt">$500–1,500 <span>/ month</span></div>
+        <p class="p-desc">Remote AP and finance ops support for US accounting firms and international businesses.</p>
+        <ul class="p-feats">
+          <li class="cb">Invoice processing &amp; coding</li>
+          <li class="cb">3-way PO matching</li>
+          <li class="cb">Expense report review</li>
+          <li class="cb">Ledger reconciliation</li>
+          <li class="cb">Monthly reporting pack</li>
         </ul>
       </div>
     </div>
 
     <!-- Mortgage Pricing -->
-    <div class="pricing-grid" id="tab-mortgage">
-      <div class="price-card reveal">
-        <div class="price-tier">Per File</div>
-        <div class="price-amount">$25–50 <span>/ file</span></div>
-        <p class="price-desc">Pay only for what you use. Perfect for lenders with variable monthly volume below 30 files.</p>
-        <ul class="price-features">
-          <li class="teal">Full pre-funding QC review</li>
-          <li class="teal">TRID / RESPA compliance check</li>
-          <li class="teal">Deficiency report per file</li>
-          <li class="teal">24–48 hr turnaround</li>
-          <li class="teal">No monthly minimums</li>
+    <div class="pgrid" id="pt-mortgage">
+      <div class="pcard rv">
+        <div class="p-tier">Per File</div>
+        <div class="p-amt">$25–50 <span>/ file</span></div>
+        <p class="p-desc">Pay per file — ideal for variable-volume lenders under 30 files/month with no minimums.</p>
+        <ul class="p-feats">
+          <li class="ct">Full pre-funding QC review</li>
+          <li class="ct">TRID / RESPA compliance check</li>
+          <li class="ct">Deficiency report per file</li>
+          <li class="ct">24–48 hr turnaround</li>
+          <li class="ct">No monthly minimums</li>
         </ul>
       </div>
-      <div class="price-card featured-teal reveal">
-        <div class="featured-label featured-label-teal">Best Value</div>
-        <div class="price-tier">Monthly Retainer</div>
-        <div class="price-amount">$800–2,000 <span>/ month</span></div>
-        <p class="price-desc">Fixed monthly engagement for consistent volume. Includes all QC services and pipeline reporting.</p>
-        <ul class="price-features">
-          <li class="teal">20–60 files per month</li>
-          <li class="teal">Pre-funding & closing QC</li>
-          <li class="teal">Weekly pipeline summary</li>
-          <li class="teal">Direct Zoom/Teams access</li>
-          <li class="teal">Priority turnaround</li>
-          <li class="teal">Monthly compliance updates</li>
+      <div class="pcard feat-t rv rv-d1">
+        <div class="feat-tag ftt">Best Value</div>
+        <div class="p-tier">Monthly Retainer</div>
+        <div class="p-amt">$800–2,000 <span>/ month</span></div>
+        <p class="p-desc">Fixed monthly engagement for consistent volume — all QC services and reporting included.</p>
+        <ul class="p-feats">
+          <li class="ct">20–60 files per month</li>
+          <li class="ct">Pre-funding &amp; closing QC</li>
+          <li class="ct">Weekly pipeline summary</li>
+          <li class="ct">Direct Zoom / Teams access</li>
+          <li class="ct">Priority turnaround</li>
+          <li class="ct">Compliance update alerts</li>
         </ul>
       </div>
-      <div class="price-card reveal">
-        <div class="price-tier">Project</div>
-        <div class="price-amount">Custom <span>/ scope</span></div>
-        <p class="price-desc">One-time engagements — post-closing audits, portfolio reviews, or QC process buildout for your team.</p>
-        <ul class="price-features">
-          <li class="teal">Post-closing file audits</li>
-          <li class="teal">Investor package review</li>
-          <li class="teal">QC checklist creation</li>
-          <li class="teal">Staff training support</li>
-          <li class="teal">Fixed-fee scoping</li>
+      <div class="pcard rv rv-d2">
+        <div class="p-tier">Project / Audit</div>
+        <div class="p-amt">Custom <span>/ scope</span></div>
+        <p class="p-desc">One-time engagements — post-closing audits, portfolio reviews, or QC process build-out for your team.</p>
+        <ul class="p-feats">
+          <li class="ct">Post-closing file audits</li>
+          <li class="ct">Investor package review</li>
+          <li class="ct">QC checklist creation</li>
+          <li class="ct">Staff training support</li>
+          <li class="ct">Fixed-fee scoping</li>
         </ul>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- WHY -->
 <section class="why" id="why">
-  <div class="why-inner">
-    <div class="reveal">
-      <div class="section-tag">Why Me</div>
-      <h2 class="section-heading">The difference that <em>matters.</em></h2>
-      <div class="divider"></div>
-      <div class="why-points">
-        <div class="why-point">
-          <div class="why-icon why-icon-gold">🧠</div>
-          <div>
-            <div class="why-point-title">Finance-native, not tech-native</div>
-            <p class="why-point-desc">I spent a decade in the trenches of real financial operations — not just building Excel tools for finance people, but being one. I understand what breaks, why it breaks, and what a proper fix actually looks like.</p>
+  <div class="inner">
+    <div class="why-grid">
+      <div class="rv">
+        <div class="sec-tag">Why Me</div>
+        <h2 class="sec-h">The difference<em>that matters.</em></h2>
+        <div class="divider"></div>
+        <div class="why-pts">
+          <div class="why-pt">
+            <div class="why-ico ico-g">🧠</div>
+            <div>
+              <div class="why-pt-t">Finance-native, not tech-native</div>
+              <p class="why-pt-d">I didn't learn finance to build Excel tools. I spent a decade in finance operations and mastered the tools along the way. That context changes the quality of every deliverable.</p>
+            </div>
           </div>
-        </div>
-        <div class="why-point">
-          <div class="why-icon why-icon-teal">🏦</div>
-          <div>
-            <div class="why-point-title">Deep US mortgage domain knowledge</div>
-            <p class="why-point-desc">TRID, RESPA, Reg Z, Encompass LOS, pre-funding, closing packages — I speak your language. US lenders don't need to train me; they need to send me files.</p>
+          <div class="why-pt">
+            <div class="why-ico ico-t">🏠</div>
+            <div>
+              <div class="why-pt-t">Deep US mortgage domain knowledge</div>
+              <p class="why-pt-d">TRID, RESPA, Reg Z, Encompass LOS — I speak your language fluently. US clients don't need to train me; they need to send me files.</p>
+            </div>
           </div>
-        </div>
-        <div class="why-point">
-          <div class="why-icon why-icon-gold">📁</div>
-          <div>
-            <div class="why-point-title">You own everything, forever</div>
-            <p class="why-point-desc">No subscriptions, no license lock-ins. Every Excel tool I deliver is fully documented and yours to maintain, modify, or hand to your team — indefinitely.</p>
+          <div class="why-pt">
+            <div class="why-ico ico-b">📁</div>
+            <div>
+              <div class="why-pt-t">You own everything, permanently</div>
+              <p class="why-pt-d">No subscriptions, no licence lock-ins. Every Excel tool I deliver is fully documented and yours to maintain, modify, or hand to your team — indefinitely.</p>
+            </div>
           </div>
-        </div>
-        <div class="why-point">
-          <div class="why-icon why-icon-teal">⚡</div>
-          <div>
-            <div class="why-point-title">Lean, responsive, no middleman</div>
-            <p class="why-point-desc">You deal directly with me — the person doing the work. No account managers, no offshore handoffs. Fast turnaround, clear communication, and accountability at every step.</p>
+          <div class="why-pt">
+            <div class="why-ico ico-g">⚡</div>
+            <div>
+              <div class="why-pt-t">One person. Full accountability.</div>
+              <p class="why-pt-d">You deal directly with me — the person doing the work. No account managers, no offshore handoffs, no delays. Fast turnaround and clear communication at every step.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="reveal">
-      <div class="market-panel">
-        <div class="section-tag" style="margin-bottom: 1.5rem;">Market Context</div>
-        <div class="market-item">
-          <span class="market-label">Indian NBFC & MFI sector</span>
-          <span class="market-val">~10,000 firms</span>
+      <div class="rv rv-d2">
+        <div class="market-panel">
+          <div class="sec-tag" style="margin-bottom:1.4rem;">Market Context</div>
+          <div class="mkt-item"><span class="mkt-lbl">Indian NBFC &amp; MFI sector</span><span class="mkt-val">~10,000 firms</span></div>
+          <div class="mkt-bar"><div class="mkt-fill" style="--w:74%"></div></div>
+          <div class="mkt-item"><span class="mkt-lbl">US mortgage originations (annual)</span><span class="mkt-val">$1.5T+</span></div>
+          <div class="mkt-bar"><div class="mkt-fill" style="--w:90%"></div></div>
+          <div class="mkt-item"><span class="mkt-lbl">IMBs share of US originations</span><span class="mkt-val">60%+</span></div>
+          <div class="mkt-bar"><div class="mkt-fill" style="--w:60%"></div></div>
+          <div class="mkt-item"><span class="mkt-lbl">Cost saving vs US QC analyst</span><span class="mkt-val">60–70%</span></div>
+          <div class="mkt-bar"><div class="mkt-fill" style="--w:65%"></div></div>
+          <div class="mkt-item"><span class="mkt-lbl">ERP cost saving for SMEs</span><span class="mkt-val">80–90%</span></div>
+          <div class="mkt-bar"><div class="mkt-fill" style="--w:85%"></div></div>
         </div>
-        <div class="market-bar"><div class="market-bar-fill" style="--w: 75%"></div></div>
-        <div class="market-item">
-          <span class="market-label">US mortgage originations (annual)</span>
-          <span class="market-val">$1.5T+</span>
-        </div>
-        <div class="market-bar"><div class="market-bar-fill" style="--w: 90%"></div></div>
-        <div class="market-item">
-          <span class="market-label">IMBs share of US originations</span>
-          <span class="market-val">60%+</span>
-        </div>
-        <div class="market-bar"><div class="market-bar-fill" style="--w: 60%"></div></div>
-        <div class="market-item">
-          <span class="market-label">Cost saving vs US QC analyst</span>
-          <span class="market-val">60–70%</span>
-        </div>
-        <div class="market-bar"><div class="market-bar-fill" style="--w: 65%"></div></div>
-        <div class="market-item">
-          <span class="market-label">ERP cost savings for Indian SMEs</span>
-          <span class="market-val">80–90%</span>
-        </div>
-        <div class="market-bar"><div class="market-bar-fill" style="--w: 85%"></div></div>
       </div>
     </div>
   </div>
@@ -1378,90 +705,76 @@
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="reveal">
-      <div class="section-tag">Contact</div>
-      <h2 class="section-heading">Let's work <em>together.</em></h2>
-      <div class="divider"></div>
-      <p style="color: var(--text-dim); font-size: 0.92rem; line-height: 1.8; margin-bottom: 3rem; max-width: 420px;">
-        Whether you need an Excel audit, a QC review, or just want to explore if we're a fit — reach out. First consultation is always free.
-      </p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-item-title">Location</div>
-            <div class="contact-item-val">Lucknow, Uttar Pradesh, India</div>
-          </div>
+  <div class="inner">
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="sec-tag">Contact</div>
+        <h2 class="sec-h">Let's work<em>together.</em></h2>
+        <div class="divider"></div>
+        <p style="color:var(--dim);font-size:.92rem;line-height:1.82;margin-bottom:2.8rem;max-width:400px;">Whether you need an Excel audit, AP support, a QC review, or just want to explore fit — first consultation is always free.</p>
+        <div class="c-item">
+          <div class="c-ico">📍</div>
+          <div><div class="c-ttl">Location</div><div class="c-val">Lucknow, Uttar Pradesh, India</div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">🌐</div>
-          <div>
-            <div class="contact-item-title">Availability</div>
-            <div class="contact-item-val">IST (India) · US EST overlap available</div>
-          </div>
+        <div class="c-item">
+          <div class="c-ico">🌐</div>
+          <div><div class="c-ttl">Availability</div><div class="c-val">IST · US EST overlap available · Remote-First</div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">💼</div>
-          <div>
-            <div class="contact-item-title">Platforms</div>
-            <div class="contact-item-val">LinkedIn · Upwork · Direct Engagement</div>
-          </div>
+        <div class="c-item">
+          <div class="c-ico">💼</div>
+          <div><div class="c-ttl">Platforms</div><div class="c-val">LinkedIn · Upwork · Direct Engagement</div></div>
         </div>
-        <div class="contact-item">
-          <div class="contact-icon">📄</div>
-          <div>
-            <div class="contact-item-title">Legal Status</div>
-            <div class="contact-item-val">Independent Contractor · GST registration in progress</div>
-          </div>
+        <div class="c-item">
+          <div class="c-ico">📄</div>
+          <div><div class="c-ttl">Legal Status</div><div class="c-val">Independent Contractor · GST registration in progress</div></div>
         </div>
       </div>
-    </div>
-    <div class="contact-form reveal">
-      <h3 style="font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.3rem; margin-bottom: 2rem;">Send an Enquiry</h3>
-      <div id="form-success" style="display:none; padding: 1.5rem; background: rgba(42,127,111,0.12); border: 1px solid rgba(42,127,111,0.4); border-radius: 4px; margin-bottom: 1.5rem;">
-        <p style="color: #3aab97; font-family: 'DM Mono', monospace; font-size: 0.82rem; letter-spacing: 0.1em;">✓ ENQUIRY SENT SUCCESSFULLY</p>
-        <p style="color: var(--text-body); font-size: 0.9rem; margin-top: 0.5rem;">Thank you! Navneet will get back to you within 24 hours.</p>
-      </div>
-      <div id="form-fields">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name *</label>
-            <input type="text" id="fname" name="first_name" placeholder="John" required>
+      <div class="rv rv-d2">
+        <div class="cform">
+          <h3>Send an Enquiry</h3>
+          <div id="form-success">
+            <p style="color:var(--teal2);font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.1em;">✓ ENQUIRY SENT SUCCESSFULLY</p>
+            <p style="color:var(--body);font-size:.88rem;margin-top:.4rem;">Thank you! Navneet will get back to you within 24 hours.</p>
           </div>
-          <div class="form-group">
-            <label for="lname">Last Name *</label>
-            <input type="text" id="lname" name="last_name" placeholder="Smith" required>
+          <div id="form-fields">
+            <div class="form-row">
+              <div class="fg"><label for="fn">First Name *</label><input type="text" id="fn" name="first_name" placeholder="John" required></div>
+              <div class="fg"><label for="ln">Last Name *</label><input type="text" id="ln" name="last_name" placeholder="Smith" required></div>
+            </div>
+            <div class="fg"><label for="em">Email Address *</label><input type="email" id="em" name="email" placeholder="you@company.com" required></div>
+            <div class="fg"><label for="co">Company / Organisation</label><input type="text" id="co" name="company" placeholder="Your company name"></div>
+            <div class="fg">
+              <label for="sv">Service Required *</label>
+              <select id="sv" name="service" required>
+                <option value="">Select a service...</option>
+                <optgroup label="Excel Automation & Financial Modeling">
+                  <option>Excel — Financial Model / Dashboard</option>
+                  <option>Excel — Loan Portfolio / EMI Tracker</option>
+                  <option>Excel — MIS Report Automation</option>
+                  <option>Excel — VBA / Macro Development</option>
+                  <option>Excel — Audit, Repair &amp; Restructuring</option>
+                </optgroup>
+                <optgroup label="Accounts Payable & Finance Operations">
+                  <option>AP — Workflow Design &amp; Automation</option>
+                  <option>AP — Reconciliation &amp; Ledger Clean-up</option>
+                  <option>AP — Month-End Close Support</option>
+                  <option>AP — Ongoing Retainer Support</option>
+                </optgroup>
+                <optgroup label="US Mortgage QC & Documentation">
+                  <option>Mortgage — Pre-Funding QC Review</option>
+                  <option>Mortgage — Closing Package Audit</option>
+                  <option>Mortgage — TRID / RESPA Compliance</option>
+                  <option>Mortgage — Monthly Retainer</option>
+                  <option>Mortgage — Post-Closing Audit</option>
+                </optgroup>
+                <option value="not-sure">Not Sure — Let's Talk</option>
+              </select>
+            </div>
+            <div class="fg"><label for="msg">Tell me about your need *</label><textarea id="msg" name="message" rows="4" placeholder="Brief description of your current challenge or what you're looking for..." required></textarea></div>
+            <div id="form-error"></div>
+            <button class="sub-btn" id="sub-btn" onclick="handleSubmit(event)">Send Enquiry →</button>
           </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" placeholder="you@company.com" required>
-        </div>
-        <div class="form-group">
-          <label for="company">Company / Organisation</label>
-          <input type="text" id="company" name="company" placeholder="Your NBFC, Lender, or Firm name">
-        </div>
-        <div class="form-group">
-          <label for="service">Service Interested In *</label>
-          <select id="service" name="service" required>
-            <option value="">Select a service...</option>
-            <option>FinOps Excel Studio — Loan Portfolio Tracker</option>
-            <option>FinOps Excel Studio — AP Automation</option>
-            <option>FinOps Excel Studio — MIS / Dashboard</option>
-            <option>FinOps Excel Studio — Excel Audit / Cleanup</option>
-            <option>MortgageOps India — Pre-Funding QC</option>
-            <option>MortgageOps India — Closing Package Audit</option>
-            <option>MortgageOps India — Monthly Retainer</option>
-            <option>Not Sure — Let's Talk</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Tell me about your need *</label>
-          <textarea id="message" name="message" rows="4" placeholder="Brief description of your current challenge or what you're looking for..." required></textarea>
-        </div>
-        <div id="form-error" style="display:none; padding: 0.8rem 1rem; background: rgba(200,50,50,0.1); border: 1px solid rgba(200,50,50,0.3); border-radius: 3px; margin-bottom: 1rem; font-size: 0.85rem; color: #e07070;"></div>
-        <button class="form-submit" id="submit-btn" onclick="handleSubmit(event)">Send Enquiry →</button>
       </div>
     </div>
   </div>
@@ -1469,110 +782,60 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      Navneet Priye Chauhan
-      <span>Independent Financial Operations Contractor · Lucknow, India</span>
-    </div>
-    <ul class="footer-links">
+  <div class="foot-inner">
+    <div class="foot-brand">Navneet Priye Chauhan<span>Finance &amp; Operations Consultant · Lucknow, India</span></div>
+    <ul class="foot-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="footer-copy">© 2025 Navneet Priye Chauhan. All rights reserved.</div>
+    <div class="foot-copy">© 2025 Navneet Priye Chauhan. All rights reserved.</div>
   </div>
 </footer>
 
 <script>
-  // Tab switching
-  function switchTab(tab, btn) {
-    document.querySelectorAll('.pricing-grid').forEach(g => g.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      b.classList.remove('active-gold', 'active-teal');
-    });
-    document.getElementById('tab-' + tab).classList.add('active');
-    if (tab === 'finops') btn.classList.add('active-gold');
-    else btn.classList.add('active-teal');
-  }
+// ── MOBILE MENU ──
+function toggleMenu(){document.getElementById('mob-menu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mob-menu').classList.remove('open')}
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
+// ── PRICING TABS ──
+function switchPTab(tab, btn){
+  document.querySelectorAll('.pgrid').forEach(g=>g.classList.remove('show'));
+  document.getElementById('pt-'+tab).classList.add('show');
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('ag','at','ab'));
+  if(tab==='excel') btn.classList.add('ag');
+  else if(tab==='ap') btn.classList.add('ab');
+  else btn.classList.add('at');
+}
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── SCROLL REVEAL ──
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-  // Form submit — connected to Formspree
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('submit-btn');
-    const errorBox = document.getElementById('form-error');
-    const successBox = document.getElementById('form-success');
-    const formFields = document.getElementById('form-fields');
-
-    // Basic validation
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value.trim();
-
-    if (!fname || !email || !service || !message) {
-      errorBox.textContent = 'Please fill in all required fields before submitting.';
-      errorBox.style.display = 'block';
-      return;
-    }
-
-    errorBox.style.display = 'none';
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-
-    const data = {
-      first_name: fname,
-      last_name: document.getElementById('lname').value.trim(),
-      email: email,
-      company: document.getElementById('company').value.trim(),
-      service: service,
-      message: message
-    };
-
-    try {
-      const response = await fetch('https://formspree.io/f/xwvrpnov', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        // Hide form, show success
-        formFields.style.display = 'none';
-        successBox.style.display = 'block';
-      } else {
-        const res = await response.json();
-        errorBox.textContent = res.errors ? res.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
-        errorBox.style.display = 'block';
-        btn.textContent = 'Send Enquiry →';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-      }
-    } catch (err) {
-      errorBox.textContent = 'Network error. Please check your connection and try again.';
-      errorBox.style.display = 'block';
-      btn.textContent = 'Send Enquiry →';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }
-  }
-
-  // Animated process-steps::before connector
-  document.querySelectorAll('.process-steps::before');
+// ── CONTACT FORM ──
+async function handleSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('sub-btn');
+  const err=document.getElementById('form-error');
+  const suc=document.getElementById('form-success');
+  const fld=document.getElementById('form-fields');
+  const fn=document.getElementById('fn').value.trim();
+  const em=document.getElementById('em').value.trim();
+  const sv=document.getElementById('sv').value;
+  const mg=document.getElementById('msg').value.trim();
+  err.style.display='none';
+  if(!fn||!em||!sv||!mg){err.textContent='Please fill in all required fields.';err.style.display='block';return}
+  btn.textContent='Sending...';btn.disabled=true;btn.style.opacity='.7';
+  const data={first_name:fn,last_name:document.getElementById('ln').value.trim(),email:em,company:document.getElementById('co').value.trim(),service:sv,message:mg};
+  try{
+    const res=await fetch('https://formspree.io/f/xwvrpnov',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+    if(res.ok){fld.style.display='none';suc.style.display='block'}
+    else{const r=await res.json();err.textContent=r.errors?r.errors.map(e=>e.message).join(', '):'Something went wrong. Please try again.';err.style.display='block';btn.textContent='Send Enquiry →';btn.disabled=false;btn.style.opacity='1'}
+  }catch{err.textContent='Network error. Please check your connection.';err.style.display='block';btn.textContent='Send Enquiry →';btn.disabled=false;btn.style.opacity='1'}
+}
 </script>
 </body>
 </html>
