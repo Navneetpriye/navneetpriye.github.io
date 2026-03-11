@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Excel Templates — Navneet Priye Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1628;--deep:#0f1c30;--card:#112035;--gold:#c9a84c;--gold2:#e8c96e;
+  --goldl:#f5e6c0;--teal:#2a7f6f;--teal2:#3aab97;--teal3:#d0ede9;
+  --blue:#2c6fac;--blue2:#d6e8f7;--slate:#8fa3bc;--white:#fff;
+  --body:#c0d2e6;--dim:#627a96;--bdr:rgba(255,255,255,0.07)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--navy);color:var(--body);overflow-x:hidden;line-height:1.75}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4}
+
+nav{position:fixed;top:0;width:100%;z-index:900;padding:1.1rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(11,22,40,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.12)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--gold);text-decoration:none;letter-spacing:.04em}
+.nav-logo em{font-style:italic;color:var(--white)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate);text-decoration:none;transition:color .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.5rem 1.3rem;border-radius:2px;transition:background .25s!important}
+.nav-cta:hover{background:var(--gold2)!important}
+
+/* HERO */
+.hero{padding:9rem 4rem 5rem;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(42,127,111,.12) 0%,transparent 60%),linear-gradient(135deg,#0b1628,#0d1e38 60%,#0b1628);position:relative;overflow:hidden;text-align:center}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+.hero-content{position:relative;z-index:2;max-width:680px;margin:0 auto}
+.eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:inline-flex;align-items:center;gap:.8rem}
+.eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;background:var(--gold)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.1;color:var(--white);margin-bottom:.8rem}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1rem;color:var(--dim);max-width:520px;margin:.8rem auto 2rem;line-height:1.82}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.chip{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .85rem;border-radius:2px;border:1px solid}
+.chip-g{border-color:rgba(201,168,76,.35);color:var(--gold)}
+.chip-t{border-color:rgba(42,127,111,.45);color:var(--teal2)}
+.chip-b{border-color:rgba(44,111,172,.4);color:#6a9fe0}
+
+/* FILTER BAR */
+.filter-bar{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;padding:2.5rem 4rem 0;position:sticky;top:64px;z-index:50;background:rgba(11,22,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);padding-bottom:1.2rem}
+.filter-btn{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem 1.3rem;border-radius:2px;border:1px solid var(--bdr);background:transparent;color:var(--dim);cursor:pointer;transition:all .25s}
+.filter-btn:hover{border-color:rgba(255,255,255,.25);color:var(--white)}
+.filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.07)}
+
+/* GRID */
+.templates-section{padding:4rem 4rem 6rem;max-width:1280px;margin:0 auto}
+.templates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+
+/* TEMPLATE CARD */
+.tcard{background:var(--card);border:1px solid var(--bdr);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s,border-color .35s}
+.tcard:hover{transform:translateY(-6px);box-shadow:0 20px 55px rgba(0,0,0,.3)}
+.tcard[data-cat="excel"]:hover{border-color:rgba(201,168,76,.3)}
+.tcard[data-cat="ap"]:hover{border-color:rgba(44,111,172,.35)}
+.tcard[data-cat="finance"]:hover{border-color:rgba(42,127,111,.35)}
+
+/* Card preview panel */
+.tcard-preview{height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.preview-excel{background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04))}
+.preview-ap{background:linear-gradient(135deg,rgba(44,111,172,.12),rgba(44,111,172,.04))}
+.preview-finance{background:linear-gradient(135deg,rgba(42,127,111,.14),rgba(42,127,111,.04))}
+
+/* Mini spreadsheet mockup */
+.mini-sheet{width:220px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;font-family:'DM Mono',monospace;font-size:7px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.ms-row{display:flex;border-bottom:1px solid rgba(255,255,255,.05)}
+.ms-row:last-child{border-bottom:none}
+.ms-cell{padding:3px 5px;flex:1;border-right:1px solid rgba(255,255,255,.05);white-space:nowrap;overflow:hidden}
+.ms-cell:last-child{border-right:none}
+.ms-hdr{background:rgba(11,22,40,.8);color:var(--gold);font-size:6.5px;font-weight:500}
+.ms-val{color:rgba(201,168,76,.7)}
+.ms-val2{color:rgba(58,171,151,.8)}
+.ms-formula{color:rgba(255,255,255,.35);font-style:italic}
+.ms-title{background:rgba(11,22,40,.9);color:var(--white);font-size:8px;font-weight:bold;padding:5px 7px;text-align:center}
+.ms-navy{background:rgba(11,22,40,.85)}
+.ms-teal{background:rgba(42,127,111,.15)}
+.ms-blue{background:rgba(44,111,172,.12)}
+
+/* Card content */
+.tcard-body{padding:1.6rem 1.8rem;flex:1;display:flex;flex-direction:column}
+.tcard-cat{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem}
+.cat-excel{color:var(--gold)}
+.cat-ap{color:#6a9fe0}
+.cat-finance{color:var(--teal2)}
+.tcard-title{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--white);margin-bottom:.6rem;line-height:1.3}
+.tcard-desc{font-size:.84rem;color:var(--dim);line-height:1.72;flex:1;margin-bottom:1.4rem}
+.tcard-features{list-style:none;margin-bottom:1.6rem;display:flex;flex-direction:column;gap:.3rem}
+.tcard-features li{font-size:.8rem;color:var(--body);display:flex;align-items:flex-start;gap:.6rem}
+.tcard-features li::before{content:'✓';font-size:.7rem;flex-shrink:0;margin-top:.1rem}
+.feat-excel li::before{color:var(--gold)}
+.feat-ap li::before{color:#6a9fe0}
+.feat-finance li::before{color:var(--teal2)}
+
+/* Download button */
+.dl-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.85rem 1.5rem;border-radius:3px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;font-weight:500;width:100%}
+.dl-excel{background:var(--gold);color:var(--navy)}
+.dl-excel:hover{background:var(--gold2);transform:translateY(-1px)}
+.dl-ap{background:var(--blue);color:var(--white)}
+.dl-ap:hover{background:#3a82c0;transform:translateY(-1px)}
+.dl-finance{background:var(--teal);color:var(--white)}
+.dl-finance:hover{background:var(--teal2);transform:translateY(-1px)}
+
+/* CTA section */
+.cta-section{background:var(--deep);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);padding:5rem 4rem;text-align:center}
+.cta-inner{max-width:580px;margin:0 auto}
+.cta-tag{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:inline-flex;align-items:center;gap:.7rem}
+.cta-tag::before,.cta-tag::after{content:'';width:24px;height:1px;background:var(--gold)}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2}
+.cta-title em{font-style:italic;color:var(--gold)}
+.cta-desc{font-size:.95rem;color:var(--dim);margin-bottom:2.2rem;line-height:1.8}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-pri{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;padding:.9rem 2rem;background:var(--gold);color:var(--navy);border:none;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;font-weight:500}
+.btn-pri:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-sec{font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;padding:.9rem 2rem;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);border-radius:2px;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-sec:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Notice */
+.notice-bar{background:rgba(42,127,111,.07);border:1px solid rgba(42,127,111,.2);border-radius:4px;padding:1rem 1.4rem;margin-top:2rem;font-size:.82rem;color:var(--dim);text-align:left;max-width:560px;margin-left:auto;margin-right:auto}
+.notice-bar strong{color:var(--teal2)}
+
+footer{background:#060e1c;border-top:1px solid rgba(201,168,76,.09);padding:2.5rem 4rem}
+.foot-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.foot-brand{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--gold)}
+.foot-brand span{display:block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:.25rem}
+.foot-links{display:flex;gap:2rem;list-style:none}
+.foot-links a{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .25s}
+.foot-links a:hover{color:var(--gold)}
+.foot-copy{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--dim)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.on{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+
+/* hidden card */
+.tcard.hidden{display:none}
+
+@media(max-width:1100px){.templates-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}.hero{padding:8rem 1.5rem 4rem}
+  .filter-bar{padding:1rem 1.5rem}.templates-section{padding:3rem 1.5rem 5rem}
+  .templates-grid{grid-template-columns:1fr}.cta-section{padding:4rem 1.5rem}
+  footer{padding:2rem 1.5rem}.foot-inner{flex-direction:column}.nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Navneet <em>Priye Chauhan</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="templates.html" class="active">Free Templates</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Free Resources</div>
+    <h1 class="hero-title">Professional Excel<em>Templates. Free.</em></h1>
+    <p class="hero-sub">6 production-ready Excel workbooks built by a finance professional — not a developer. Download, customise, and use immediately. No email required.</p>
+    <div class="hero-chips">
+      <span class="chip chip-g">6 Templates</span>
+      <span class="chip chip-t">Fully Functional Formulas</span>
+      <span class="chip chip-b">Industry-Standard Design</span>
+      <span class="chip chip-g">Free Forever</span>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all',this)">All Templates</button>
+  <button class="filter-btn" onclick="filterCards('excel',this)">Excel & Modeling</button>
+  <button class="filter-btn" onclick="filterCards('finance',this)">Finance & Ops</button>
+  <button class="filter-btn" onclick="filterCards('ap',this)">Accounts Payable</button>
+</div>
+
+<!-- TEMPLATES GRID -->
+<div class="templates-section">
+  <div class="templates-grid" id="templates-grid">
+
+    <!-- 1. Loan EMI Calculator -->
+    <div class="tcard rv" data-cat="excel">
+      <div class="tcard-preview preview-excel">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Loan EMI Calculator</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr">Input</div>
+            <div class="ms-cell ms-hdr">Value</div>
+          </div>
+          <div class="ms-row"><div class="ms-cell">Loan Amount</div><div class="ms-cell ms-val">₹5,00,000</div></div>
+          <div class="ms-row ms-teal"><div class="ms-cell">Interest Rate</div><div class="ms-cell ms-val">10.5%</div></div>
+          <div class="ms-row"><div class="ms-cell">Tenure (Months)</div><div class="ms-cell ms-val">60</div></div>
+          <div class="ms-row ms-teal"><div class="ms-cell" style="font-weight:bold">Monthly EMI</div><div class="ms-cell ms-val2" style="font-weight:bold">₹10,746</div></div>
+          <div class="ms-row"><div class="ms-cell ms-formula" style="font-size:6px">Amortization: 240 rows →</div></div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-excel">Excel & Financial Modeling</div>
+        <div class="tcard-title">Loan EMI Calculator & Amortization Schedule</div>
+        <p class="tcard-desc">Calculate monthly EMIs instantly and generate a full month-by-month amortization schedule showing principal, interest, and closing balance for up to 240 months.</p>
+        <ul class="tcard-features feat-excel">
+          <li>PMT-formula based EMI calculation</li>
+          <li>Full amortization schedule (up to 20 years)</li>
+          <li>Cumulative interest & principal tracking</li>
+          <li>Change any input — everything recalculates</li>
+        </ul>
+        <a href="01_Loan_EMI_Calculator.xlsx" download class="dl-btn dl-excel">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+    <!-- 2. Budget & Cash Flow -->
+    <div class="tcard rv rv-d1" data-cat="finance">
+      <div class="tcard-preview preview-finance">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Budget & Cash Flow Tracker</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr">Category</div>
+            <div class="ms-cell ms-hdr">Jan</div>
+            <div class="ms-cell ms-hdr">Feb</div>
+            <div class="ms-cell ms-hdr">Total</div>
+          </div>
+          <div class="ms-row ms-teal"><div class="ms-cell" style="font-size:6px;font-weight:bold">INCOME</div></div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Salary</div><div class="ms-cell ms-val">85,000</div><div class="ms-cell ms-val">85,000</div><div class="ms-cell ms-val2">10,20,000</div></div>
+          <div class="ms-row ms-navy"><div class="ms-cell" style="font-weight:bold;font-size:6px">EXPENSES</div></div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Rent</div><div class="ms-cell ms-val">18,000</div><div class="ms-cell ms-val">18,000</div><div class="ms-cell ms-val">2,16,000</div></div>
+          <div class="ms-row ms-teal"><div class="ms-cell" style="font-weight:bold;font-size:6px">Net Cash Flow</div><div class="ms-cell ms-val2" style="font-weight:bold">42,000</div><div class="ms-cell ms-val2">42,000</div><div class="ms-cell ms-val2">5,04,000</div></div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-finance">Finance & Operations</div>
+        <div class="tcard-title">Monthly Budget & Cash Flow Tracker</div>
+        <p class="tcard-desc">Track income and expenses across 12 months with automatic totals, net cash flow calculation, and savings rate — for individuals, freelancers, and small businesses.</p>
+        <ul class="tcard-features feat-finance">
+          <li>12-month income vs expense layout</li>
+          <li>Fixed & variable expense categories</li>
+          <li>Auto net cash flow & savings rate</li>
+          <li>Annual totals column built-in</li>
+        </ul>
+        <a href="02_Budget_CashFlow_Tracker.xlsx" download class="dl-btn dl-finance">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+    <!-- 3. AP Tracker -->
+    <div class="tcard rv rv-d2" data-cat="ap">
+      <div class="tcard-preview preview-ap">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Invoice & AP Tracker</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr">Invoice</div>
+            <div class="ms-cell ms-hdr">Vendor</div>
+            <div class="ms-cell ms-hdr">Amount</div>
+            <div class="ms-cell ms-hdr">Status</div>
+          </div>
+          <div class="ms-row"><div class="ms-cell">INV-001</div><div class="ms-cell">ABC Ltd</div><div class="ms-cell ms-val">45,000</div><div class="ms-cell ms-val2">Paid</div></div>
+          <div class="ms-row" style="background:rgba(255,255,255,.04)"><div class="ms-cell">INV-002</div><div class="ms-cell">XYZ Svc</div><div class="ms-cell ms-val">28,500</div><div class="ms-cell" style="color:#e07070">Overdue</div></div>
+          <div class="ms-row"><div class="ms-cell">INV-003</div><div class="ms-cell">Tech Co</div><div class="ms-cell ms-val">75,000</div><div class="ms-cell ms-val" style="color:var(--gold)">Partial</div></div>
+          <div class="ms-row ms-navy" style="font-size:6.5px;padding:3px 5px;color:rgba(201,168,76,.8)">Outstanding: ₹71,250 · Overdue: 1</div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-ap">Accounts Payable</div>
+        <div class="tcard-title">Invoice & Accounts Payable Tracker</div>
+        <p class="tcard-desc">Track all vendor invoices end-to-end — status auto-calculates as Paid, Pending, Overdue, or Due Today. Includes a summary panel with totals and overdue counts.</p>
+        <ul class="tcard-features feat-ap">
+          <li>Auto-status: Paid / Pending / Overdue</li>
+          <li>Days overdue calculation</li>
+          <li>Summary panel (totals, outstanding, count)</li>
+          <li>100 rows pre-formatted & ready</li>
+        </ul>
+        <a href="03_Invoice_AP_Tracker.xlsx" download class="dl-btn dl-ap">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+    <!-- 4. P&L Statement -->
+    <div class="tcard rv" data-cat="finance">
+      <div class="tcard-preview preview-finance">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Profit & Loss Statement</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr" style="flex:2">Particulars</div>
+            <div class="ms-cell ms-hdr">FY23</div>
+            <div class="ms-cell ms-hdr">FY24</div>
+            <div class="ms-cell ms-hdr">FY25</div>
+          </div>
+          <div class="ms-row ms-teal"><div class="ms-cell" style="flex:2;font-weight:bold">TOTAL REVENUE</div><div class="ms-cell ms-val2">43L</div><div class="ms-cell ms-val2">48L</div><div class="ms-cell ms-val2">51L</div></div>
+          <div class="ms-row"><div class="ms-cell" style="flex:2">Gross Profit</div><div class="ms-cell ms-val">21L</div><div class="ms-cell ms-val">24L</div><div class="ms-cell ms-val">25L</div></div>
+          <div class="ms-row" style="background:rgba(42,127,111,.2)"><div class="ms-cell" style="flex:2;font-weight:bold">EBIT</div><div class="ms-cell ms-val2">7.8L</div><div class="ms-cell ms-val2">9.1L</div><div class="ms-cell ms-val2">9.8L</div></div>
+          <div class="ms-row" style="background:rgba(201,168,76,.15)"><div class="ms-cell" style="flex:2;font-weight:bold">NET PROFIT</div><div class="ms-cell ms-val" style="color:var(--gold)">5.1L</div><div class="ms-cell ms-val" style="color:var(--gold)">6.2L</div><div class="ms-cell ms-val" style="color:var(--gold)">6.7L</div></div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-finance">Finance & Operations</div>
+        <div class="tcard-title">Profit & Loss Statement Template</div>
+        <p class="tcard-desc">A complete 3-year P&L with auto-calculated gross profit, EBIT, PBT, tax, and net profit margins. Built with industry-standard structure for any business or client reporting.</p>
+        <ul class="tcard-features feat-finance">
+          <li>3-year comparative layout (FY23/24/25)</li>
+          <li>Gross profit, EBIT & net margin auto-calc</li>
+          <li>YoY change & % change columns</li>
+          <li>Income tax (30%) calculated automatically</li>
+        </ul>
+        <a href="04_ProfitLoss_Statement.xlsx" download class="dl-btn dl-finance">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+    <!-- 5. Bank Reconciliation -->
+    <div class="tcard rv rv-d1" data-cat="finance">
+      <div class="tcard-preview preview-finance">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Bank Reconciliation</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr">Description</div>
+            <div class="ms-cell ms-hdr">Bank</div>
+            <div class="ms-cell ms-hdr">Books</div>
+            <div class="ms-cell ms-hdr">Diff</div>
+          </div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Opening Deposit</div><div class="ms-cell ms-val">5,00,000</div><div class="ms-cell ms-val">5,00,000</div><div class="ms-cell ms-val2">0</div></div>
+          <div class="ms-row" style="background:rgba(255,255,255,.04)"><div class="ms-cell" style="font-size:6px">Vendor Payment</div><div class="ms-cell ms-val">45,000</div><div class="ms-cell ms-val">45,000</div><div class="ms-cell ms-val2">0</div></div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Bank Charges</div><div class="ms-cell ms-val">850</div><div class="ms-cell" style="color:#e07070">—</div><div class="ms-cell" style="color:#e07070">850</div></div>
+          <div class="ms-row ms-teal"><div class="ms-cell" style="font-weight:bold;font-size:6px">DIFFERENCE</div><div class="ms-cell" colspan="3" style="color:var(--gold);font-weight:bold">→ 850</div></div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-finance">Finance & Operations</div>
+        <div class="tcard-title">Bank Reconciliation Template</div>
+        <p class="tcard-desc">Reconcile your bank statement against your books systematically. Auto-calculates differences per transaction and provides a full reconciliation summary — difference should be zero when done.</p>
+        <ul class="tcard-features feat-finance">
+          <li>Transaction-level matching (50 rows)</li>
+          <li>Auto difference per line item</li>
+          <li>Reconciliation summary with adjusted balance</li>
+          <li>Opening & closing balance inputs</li>
+        </ul>
+        <a href="05_Bank_Reconciliation.xlsx" download class="dl-btn dl-finance">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+    <!-- 6. Expense Report -->
+    <div class="tcard rv rv-d2" data-cat="ap">
+      <div class="tcard-preview preview-ap">
+        <div class="mini-sheet">
+          <div class="ms-row ms-title">Business Expense Report</div>
+          <div class="ms-row ms-navy">
+            <div class="ms-cell ms-hdr">Category</div>
+            <div class="ms-cell ms-hdr">Description</div>
+            <div class="ms-cell ms-hdr">Rcpt?</div>
+            <div class="ms-cell ms-hdr">Amount</div>
+          </div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Travel</div><div class="ms-cell" style="font-size:6px">Train to Delhi</div><div class="ms-cell ms-val2">Yes</div><div class="ms-cell ms-val">1,850</div></div>
+          <div class="ms-row" style="background:rgba(255,255,255,.04)"><div class="ms-cell" style="font-size:6px">Hotel</div><div class="ms-cell" style="font-size:6px">2 nights</div><div class="ms-cell ms-val2">Yes</div><div class="ms-cell ms-val">6,200</div></div>
+          <div class="ms-row"><div class="ms-cell" style="font-size:6px">Meals</div><div class="ms-cell" style="font-size:6px">Client lunch</div><div class="ms-cell ms-val2">Yes</div><div class="ms-cell ms-val">2,400</div></div>
+          <div class="ms-row ms-navy" style="font-size:6.5px;padding:3px 5px;color:rgba(201,168,76,.8);font-weight:bold">Total: ₹13,498 · By Category →</div>
+        </div>
+      </div>
+      <div class="tcard-body">
+        <div class="tcard-cat cat-ap">Accounts Payable</div>
+        <div class="tcard-title">Business Expense Report</div>
+        <p class="tcard-desc">A professional expense claim form for employees and contractors. Logs expenses by category, auto-totals by category in a summary panel, and includes an approval signature block.</p>
+        <ul class="tcard-features feat-ap">
+          <li>8 expense categories with SUMIF totals</li>
+          <li>Receipt & approval tracking columns</li>
+          <li>Category summary panel (auto-updates)</li>
+          <li>Manager approval signature block</li>
+        </ul>
+        <a href="06_Business_Expense_Report.xlsx" download class="dl-btn dl-ap">⬇ Download Free Template</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-tag">Need Something Custom?</div>
+    <h2 class="cta-title">These templates are<em>just the start.</em></h2>
+    <p class="cta-desc">These free tools showcase what's possible. For your specific business — whether you need a full loan portfolio system, AP automation suite, or US mortgage pipeline tracker — I build custom solutions tailored exactly to your operations.</p>
+    <div class="cta-btns">
+      <a href="index.html#contact" class="btn-pri">Request a Custom Build</a>
+      <a href="index.html#services" class="btn-sec">View All Services</a>
+    </div>
+    <div class="notice-bar"><strong>Free Consultation:</strong> Not sure what you need? Book a free 30-minute call — I'll review your current Excel setup and tell you exactly what's possible.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">Navneet Priye Chauhan<span>Finance & Operations Consultant · Lucknow, India</span></div>
+    <ul class="foot-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="templates.html">Templates</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="foot-copy">© 2025 Navneet Priye Chauhan. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');ro.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+// Filter
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tcard').forEach(card=>{
+    if(cat==='all' || card.dataset.cat===cat){
+      card.classList.remove('hidden');
+      setTimeout(()=>card.classList.add('on'),50);
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
